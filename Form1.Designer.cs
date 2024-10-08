@@ -70,6 +70,7 @@
             this.replace_cmd_cb_cmts = new System.Windows.Forms.ToolStripMenuItem();
             this.insert_selectedrow_cmd_cb_cmts = new System.Windows.Forms.ToolStripMenuItem();
             this.insert_endline_cmd_cb_cmts = new System.Windows.Forms.ToolStripMenuItem();
+            this.suggestionBox = new System.Windows.Forms.ListBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.portlist_tslabel = new System.Windows.Forms.ToolStripLabel();
             this.portlist_tscb = new System.Windows.Forms.ToolStripComboBox();
@@ -399,6 +400,7 @@
             this.CLIpanel.BackColor = System.Drawing.Color.MistyRose;
             this.CLIpanel.Controls.Add(this.clitbox);
             this.CLIpanel.Controls.Add(this.cmd_cb);
+            this.CLIpanel.Controls.Add(this.suggestionBox);
             this.CLIpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CLIpanel.Location = new System.Drawing.Point(0, 49);
             this.CLIpanel.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -434,6 +436,7 @@
             this.cmd_cb.Name = "cmd_cb";
             this.cmd_cb.Size = new System.Drawing.Size(824, 29);
             this.cmd_cb.TabIndex = 1;
+            this.cmd_cb.TextChanged += new System.EventHandler(this.cmd_cb_TextChanged);
             this.cmd_cb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmd_cb_KeyDown);
             // 
             // cmd_cb_menustrip
@@ -478,6 +481,18 @@
             this.insert_endline_cmd_cb_cmts.Size = new System.Drawing.Size(287, 22);
             this.insert_endline_cmd_cb_cmts.Text = "Komut Listesine Ekle";
             this.insert_endline_cmd_cb_cmts.Click += new System.EventHandler(this.insert_endline_cmd_cb_cmts_Click);
+            // 
+            // suggestionBox
+            // 
+            this.suggestionBox.FormattingEnabled = true;
+            this.suggestionBox.ItemHeight = 17;
+            this.suggestionBox.Location = new System.Drawing.Point(477, -42);
+            this.suggestionBox.Name = "suggestionBox";
+            this.suggestionBox.Size = new System.Drawing.Size(200, 157);
+            this.suggestionBox.TabIndex = 0;
+            this.suggestionBox.Visible = false;
+            this.suggestionBox.Click += new System.EventHandler(this.SuggestionBox_Click);
+            this.suggestionBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SuggestionBox_KeyDown);
             // 
             // toolStrip1
             // 
@@ -869,12 +884,6 @@
             // Devices_cb
             // 
             this.Devices_cb.FormattingEnabled = true;
-            this.Devices_cb.Items.AddRange(new object[] {
-            "ALCATEL (r)",
-            "HUAWEI (n)",
-            "ZTE  (n)",
-            "Test1 (rn)",
-            "Test2"});
             this.Devices_cb.Location = new System.Drawing.Point(119, 283);
             this.Devices_cb.Margin = new System.Windows.Forms.Padding(2);
             this.Devices_cb.Name = "Devices_cb";
@@ -1167,6 +1176,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Serial Port v2.0 beta";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
