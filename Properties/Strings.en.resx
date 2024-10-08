@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="connect" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="disconnect" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="refreshport" xml:space="preserve">
+    <value>Refresh Port List</value>
+  </data>
+  <data name="portlist" xml:space="preserve">
+    <value>Port List</value>
+  </data>
+  <data name="autocfg_proccess" xml:space="preserve">
+    <value>Autoconfig Proccess</value>
+  </data>
+  <data name="connect_setting" xml:space="preserve">
+    <value>Connection Settings</value>
+  </data>
+  <data name="cmd_screen" xml:space="preserve">
+    <value>Command Screen</value>
+  </data>
+  <data name="var_def" xml:space="preserve">
+    <value>Variable Definitions</value>
+  </data>
+  <data name="sys_ip" xml:space="preserve">
+    <value>System IP</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>Search this area</value>
+  </data>
+  <data name="get_syslist" xml:space="preserve">
+    <value>Get System List (apppath\config\syslist.txt)</value>
+  </data>
+  <data name="IPs_found" xml:space="preserve">
+    <value>IPs</value>
+  </data>
+  <data name="devices" xml:space="preserve">
+    <value>Devices</value>
+  </data>
+  <data name="endline" xml:space="preserve">
+    <value>End Line</value>
+  </data>
+  <data name="con_type" xml:space="preserve">
+    <value>Connection Type</value>
+  </data>
+  <data name="spaceadd" xml:space="preserve">
+    <value>Space to be added with double click</value>
+  </data>
+  <data name="sysname" xml:space="preserve">
+    <value>System Name</value>
+  </data>
+  <data name="preconfig" xml:space="preserve">
+    <value>Default Config</value>
+  </data>
+  <data name="select_row" xml:space="preserve">
+    <value>Start from selected row</value>
+  </data>
+  <data name="start_cfg" xml:space="preserve">
+    <value>Start Configuration</value>
+  </data>
+  <data name="refresh_filelist" xml:space="preserve">
+    <value>Refresh File List ( app_path\config)</value>
+  </data>
+  <data name="up_com_file" xml:space="preserve">
+    <value>Command File Update</value>
+  </data>
+  <data name="saveas_comfile" xml:space="preserve">
+    <value>Save As Command File</value>
+  </data>
+  <data name="lang" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="about" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="appdetail" xml:space="preserve">
+    <value>Application Detail</value>
+  </data>
+  <data name="defines" xml:space="preserve">
+    <value>Defines</value>
+  </data>
+  <data name="port_error" xml:space="preserve">
+    <value>Cannot find ports</value>
+  </data>
+  <data name="connected_mbox_error" xml:space="preserve">
+    <value>Failed to open serial port:</value>
+  </data>
+  <data name="getwayIP" xml:space="preserve">
+    <value>Getway IP</value>
+  </data>
+  <data name="sysfound" xml:space="preserve">
+    <value>System Names</value>
+  </data>
+  <data name="save_ok" xml:space="preserve">
+    <value>Save succesfully</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="port_closed" xml:space="preserve">
+    <value>Port Closed</value>
+  </data>
+  <data name="connect_errormsg" xml:space="preserve">
+    <value>Connection Error</value>
+  </data>
+  <data name="device_connect_errormsg" xml:space="preserve">
+    <value>No devices connected</value>
+  </data>
+  <data name="connect_setting_error" xml:space="preserve">
+    <value>Connection Settings Error</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="saveas" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="insertcmd" xml:space="preserve">
+    <value>Insert From Command Line</value>
+  </data>
+  <data name="unknown_connect_error" xml:space="preserve">
+    <value>An undetermined error has occurred. Check whether your port connection is open or you are connected to the correct port. Check your connected cables and devices.</value>
+  </data>
+  <data name="Complate" xml:space="preserve">
+    <value>Complate</value>
+  </data>
+  <data name="ip_error" xml:space="preserve">
+    <value>IP address is not valid</value>
+  </data>
+  <data name="error_select_list" xml:space="preserve">
+    <value>List is empty or no items are selected</value>
+  </data>
+  <data name="insert_between_cmd" xml:space="preserve">
+    <value>Insert Command is Between Line</value>
+  </data>
+  <data name="insert_cmd_endlist" xml:space="preserve">
+    <value>Insert Command is EndLine</value>
+  </data>
+  <data name="replace_line" xml:space="preserve">
+    <value>Replace Selected Line</value>
+  </data>
+  <data name="text_file" xml:space="preserve">
+    <value>Text File</value>
+  </data>
+  <data name="all_file" xml:space="preserve">
+    <value>All Files</value>
+  </data>
+  <data name="warning_file" xml:space="preserve">
+    <value>This file already exists. Do you want to overwrite?</value>
+  </data>
+  <data name="warning_file_shortversion" xml:space="preserve">
+    <value>This file already exist.</value>
+  </data>
+  <data name="file_select_message" xml:space="preserve">
+    <value>Please select file</value>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>Warning!</value>
+  </data>
+  <data name="Move_up" xml:space="preserve">
+    <value>Move Up</value>
+  </data>
+  <data name="move_down" xml:space="preserve">
+    <value>Move Down</value>
+  </data>
+  <data name="invalid_file_path" xml:space="preserve">
+    <value>File Path Invalid.</value>
+  </data>
+  <data name="templates" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="templates_syslist" xml:space="preserve">
+    <value>Sample System List Template</value>
+  </data>
+  <data name="templates_definition" xml:space="preserve">
+    <value>Sample Definition Template</value>
+  </data>
+  <data name="templates_command" xml:space="preserve">
+    <value>Sample Command Template</value>
+  </data>
+</root>
