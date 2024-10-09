@@ -1366,7 +1366,6 @@ namespace Serial_Port
             string[] words = input.Split(' ');
             return words.Last();
         }
-
         private void cmd_cb_KeyDown(object sender, KeyEventArgs e)
         {
             if (suggestionBox.Visible)
@@ -1382,67 +1381,67 @@ namespace Serial_Port
                     suggestionBox.SelectedIndex--;
                     e.Handled = true;
                 }
-                else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                else if (e.KeyCode == Keys.Right) // Sağ ok tuşu ile öneriyi seçme
                 {
-                    e.SuppressKeyPress = true;
                     InsertSelectedSuggestion();
                     cmd_cb.Text = cmd_cb.Text + " ";
-                    suggestionBox.Visible=false;
+                    suggestionBox.Visible = false;
                     cmd_cb.SelectionStart = cmd_cb.Text.Length; // İmleci sona al
                     e.Handled = true;
                 }
             }
+            else
+            {
+                // Öneri kutusu görünmüyorsa cmd_cb'de gezinme işlemi
+                
+                 if (e.KeyCode == Keys.Up)
+                {
+                    // Yukarı ok tuşuna basıldığında önceki değeri çağırın
+                    e.SuppressKeyPress = true;
+                    try
+                    {
+                        if (cmd_cb.Items.Count > 0)
+                        {
+                            if (cmd_cb.SelectedIndex <= 0) { cmd_cb.SelectedIndex = cmd_cb.Items.Count - 1; }
+                            else { cmd_cb.SelectedIndex = cmd_cb.SelectedIndex - 1; }
+                        }
+                    }
+                    catch { }
+                }
+                else if (e.KeyCode == Keys.Down)
+                {
+                    // Aşağı ok tuşuna basıldığında sonraki değeri çağırın
+                    e.SuppressKeyPress = true;
+                    try
+                    {
+                        if (cmd_cb.SelectedIndex == cmd_cb.Items.Count - 1) { cmd_cb.SelectedIndex = 0; }
+                        else { cmd_cb.SelectedIndex = cmd_cb.SelectedIndex + 1; }
+                    }
+                    catch { }
+                }
+            }
 
-            else if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true; // Enter tuşunun TextBox'a yeni satır eklemesini engelle
                 if (serialPort1.IsOpen)
                 {
                     // Komutu sonlandırmadan gönder, ardından seçilen endline karakterini gönder
-                    string command = ReplaceCommandData(cmd_cb.Text).Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
+                    string command = ReplaceCommandData(cmd_cb.Text.TrimEnd()).Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
                     serialPort1.Write(command); // Komutu gönder
                     if (!string.IsNullOrEmpty(selectedEndline))
                     {
                         serialPort1.Write(selectedEndline); // Satır sonu karakterini gönder
                     }
                     cmd_cb.Items.Add(cmd_cb.Text);
-                    cmd_cb.Text=string.Empty;
+                    cmd_cb.Text = string.Empty;
                 }
-                else
-                {
-                    MessageBox.Show("Seri port açık değil.");
-                }
-                
-            }
-            else if (e.KeyCode == Keys.Up)
+            
+            else
             {
-                // Yukarı ok tuşuna basıldığında önceki değeri çağırın
-                e.SuppressKeyPress = true;
-                try
-                {
-                    if (cmd_cb.Items.Count > 0)
-                    {
-                        if (cmd_cb.SelectedIndex <= 0) { cmd_cb.SelectedIndex = cmd_cb.Items.Count - 1; }
-                        else { cmd_cb.SelectedIndex = cmd_cb.SelectedIndex - 1; }
-                    }
-                }
-                catch
-                { }
+                MessageBox.Show("Seri port açık değil.");
             }
-
-
-            else if (e.KeyCode == Keys.Down)
-            {
-                // Aşağı ok tuşuna basıldığında sonraki değeri çağırın
-                e.SuppressKeyPress = true;
-                try
-                {
-                    if (cmd_cb.SelectedIndex == cmd_cb.Items.Count - 1) { cmd_cb.SelectedIndex = 0; }
-                    else { cmd_cb.SelectedIndex = cmd_cb.SelectedIndex + 1; }
-                }
-                catch { }
             }
-
 
             if (serialPort1.IsOpen && (e.KeyCode == Keys.F1))
             {
@@ -1462,7 +1461,6 @@ namespace Serial_Port
                         serialPort1.Write(cmd_cb.Text + " ?" + "\r\n");
                         break;
                 }
-
             }
         }
 
