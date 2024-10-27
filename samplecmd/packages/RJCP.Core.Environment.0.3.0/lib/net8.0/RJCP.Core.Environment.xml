@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RJCP.Core.Environment</name>
+    </assembly>
+    <members>
+        <member name="T:RJCP.Core.Environment.Platform">
+            <summary>
+            Utility class providing OS specific functionality.
+            </summary>
+        </member>
+        <member name="M:RJCP.Core.Environment.Platform.IsWinNT">
+            <summary>
+            Determines whether the operating system is Windows NT or later.
+            </summary>
+            <returns>
+            <see langword="true"/> if the operating system is Windows NT or later; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:RJCP.Core.Environment.Platform.IsUnix">
+            <summary>
+            Determines whether the operating system is a supported version of a Unix based system.
+            </summary>
+            <returns>
+            <see langword="true"/> if the operating system is a supported version of a Unix based system; otherwise, <see langword="false"/>.
+            </returns>
+            <remarks>
+            The method is meant to be compatible with both the .NET CLR and the MONO framework.
+            Details of how to detect the platform under MONO can be found at
+            http://www.mono-project.com/docs/faq/technical/#how-to-detect-the-execution-platform
+            </remarks>
+        </member>
+        <member name="M:RJCP.Core.Environment.Platform.GetFolderPath(System.Environment.SpecialFolder)">
+            <summary>
+            Gets the path to the system special folder that is identified by the specified enumeration.
+            </summary>
+            <param name="folder">An enumerated constant that identifies a system special folder.</param>
+            <returns>
+            The path to the specified system special folder, if that folder physically exists on your computer;
+            otherwise, an empty string ( <see cref="F:System.String.Empty"/>). A folder will not physically exist if the operating
+            system did not create it, the existing folder was deleted, or the folder is a virtual directory, such as
+            <see cref="F:System.Environment.SpecialFolder.MyComputer"/>, which does not correspond to a physical path.
+            </returns>
+            <exception cref="T:System.PlatformNotSupportedException">The platform is not supported.</exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="folder"/> is not a member of <see cref="T:System.Environment.SpecialFolder"/>.
+            </exception>
+            <exception cref="T:System.Security.SecurityException">
+            The caller doesn't have permissions to read environment variables.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Unable to determine the location of the home directory.
+            </exception>
+            <remarks>
+            This method can be used in place of the .NET <see cref="T:System.Environment.SpecialFolder"/>. On Windows, it will
+            return the same results. On Linux, it will initially apply the XDG specifications for folder paths, and if
+            not available, will fall back to <see cref="T:System.Environment.SpecialFolder"/>.
+            </remarks>
+        </member>
+        <member name="M:RJCP.Core.Environment.Platform.IsMonoClr">
+            <summary>
+            Determines if the software is running on top of the Mono Common Language Runtime.
+            </summary>
+            <returns><see langword="true"/> if running on the Mono CLR; otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:RJCP.Core.Environment.Platform.IsMSys">
+            <summary>
+            Determines if the process is started from an MSys Shell.
+            </summary>
+            <returns>
+            Returns <see langword="true"/> the system is running from an MSys shell, otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:RJCP.Core.Environment.Platform.IsCygwin">
+            <summary>
+            Determines if the process is started from a Cygwin shell.
+            </summary>
+            <returns>
+            Returns <see langword="true"/> the system is running from a Cygwin shell, otherwise, ///
+            <see langword="false"/>.
+            </returns>
+            <remarks>
+            It is observed that Windows executables inherit a new environment variable <c>_</c> that has the name of the
+            process. If this is found in the current process space, we assume we're started from Cygwin.
+            </remarks>
+        </member>
+        <member name="T:RJCP.Core.Environment.Resources.Messages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:RJCP.Core.Environment.Resources.Messages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:RJCP.Core.Environment.Resources.Messages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:RJCP.Core.Environment.Resources.Messages.ArgumentEx_XdgUnknownSpecialFolder">
+            <summary>
+              Looks up a localized string similar to Unknown special folder.
+            </summary>
+        </member>
+        <member name="P:RJCP.Core.Environment.Resources.Messages.InvalidOperationEx_XdgUnknownHome">
+            <summary>
+              Looks up a localized string similar to Unable to determine home directory path.
+            </summary>
+        </member>
+        <member name="T:RJCP.Core.Environment.Xdg">
+            <summary>
+            A class to implement portions of the XDG Base Directory Specification.
+            </summary>
+            <remarks>
+            The XDG specification is for Unix like operating systems. Please refer to
+            https://specifications.freedesktop.org/basedir-spec/basedir-spec-0.7.html
+            </remarks>
+        </member>
+        <member name="M:RJCP.Core.Environment.Xdg.GetFolderPath(RJCP.Core.Environment.Xdg.SpecialFolder)">
+            <summary>
+            Gets the folder path for a specific <see cref="T:RJCP.Core.Environment.Xdg.SpecialFolder"/>.
+            </summary>
+            <param name="folder">The special folder value to obtain.</param>
+            <returns>A path in the native format.</returns>
+            <exception cref="T:System.ArgumentException">The value of <paramref name="folder"/> is not known.</exception>
+            <exception cref="T:System.Security.SecurityException">
+            The caller doesn't have permissions to read environment variables.
+            </exception>
+            <exception cref="T:System.PlatformNotSupportedException">
+            The platform is not supported. Only Windows NT and Unix platforms are supported.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Unable to determine the location of the home directory.
+            </exception>
+            <remarks>
+            This function fulfills the XDG Base Specification v0.7 and is intended for usage only on Unix like operating
+            systems. Environment variables defined in the XDG specification are for Unix like operating systems and are
+            interpreted as such. No variable substitution is done within the environment variables from the XDG
+            specification and must be expanded prior.
+            <para>
+            When determining the home directory, the <c>$HOME</c> is used on Unix like operating systems. If the
+            <c>$HOME</c> environment variable is not defined, the root directory path '/' is used. On Windows NT
+            operating systems, the local application directory from the system is returned (as referred to
+            <see cref="T:System.Environment.SpecialFolder"/> enumeration).
+            </para>
+            </remarks>
+        </member>
+        <member name="M:RJCP.Core.Environment.Xdg.ResolveFile(RJCP.Core.Environment.Xdg.SpecialFolder,System.String)">
+            <summary>
+            Returns the full path to the file name, relative to the special folder provided.
+            </summary>
+            <param name="folder">The special folder base directory.</param>
+            <param name="fileName">Name of the file to resolve.</param>
+            <returns>A path in the native format.</returns>
+            <exception cref="T:System.PlatformNotSupportedException">The platform is not supported.</exception>
+            <remarks>
+            For some folder paths (specifically, only <see cref="F:RJCP.Core.Environment.Xdg.SpecialFolder.LocalApplicationData"/> and
+            <see cref="F:RJCP.Core.Environment.Xdg.SpecialFolder.CommonApplicationData"/>, a set of paths may be searched if a file is not found in
+            the current home directory. This should be the function used when identifying a file for loading from disk.
+            Use the method <see cref="M:RJCP.Core.Environment.Xdg.GetFolderPath(RJCP.Core.Environment.Xdg.SpecialFolder)"/> for getting a path when writing a file to disk.
+            </remarks>
+        </member>
+        <member name="M:RJCP.Core.Environment.Xdg.ResolveDirectory(RJCP.Core.Environment.Xdg.SpecialFolder,System.String)">
+            <summary>
+            Returns the full path to the directory name, relative to the special folder provided.
+            </summary>
+            <param name="folder">The special folder base directory.</param>
+            <param name="directoryName">Name of the directory to resolve.</param>
+            <returns>A path in the native format.</returns>
+            <exception cref="T:System.PlatformNotSupportedException">The platform is not supported.</exception>
+            <remarks>
+            For some folder paths (specifically, only <see cref="F:RJCP.Core.Environment.Xdg.SpecialFolder.LocalApplicationData"/> and
+            <see cref="F:RJCP.Core.Environment.Xdg.SpecialFolder.CommonApplicationData"/>, a set of paths may be searched if a file is not found in
+            the current home directory. This should be the function used when identifying a file for loading from disk.
+            Use the method <see cref="M:RJCP.Core.Environment.Xdg.GetFolderPath(RJCP.Core.Environment.Xdg.SpecialFolder)"/> for getting a path when writing a file to disk.
+            </remarks>
+        </member>
+        <member name="T:RJCP.Core.Environment.Xdg.SpecialFolder">
+            <summary>
+            Specifies enumerated constants used to retrieve directory paths to system special folders.
+            </summary>
+        </member>
+        <member name="F:RJCP.Core.Environment.Xdg.SpecialFolder.LocalApplicationData">
+            <summary>
+            Directory location for local application data (default is <c>$HOME/.local/share</c>).
+            </summary>
+        </member>
+        <member name="F:RJCP.Core.Environment.Xdg.SpecialFolder.CommonApplicationData">
+            <summary>
+            The common application data, or configuration data (default is <c>$HOME/.config</c>).
+            </summary>
+        </member>
+        <member name="F:RJCP.Core.Environment.Xdg.SpecialFolder.CacheData">
+            <summary>
+            Cache data (default is <c>$HOME/.cache</c>).
+            </summary>
+        </member>
+    </members>
+</doc>

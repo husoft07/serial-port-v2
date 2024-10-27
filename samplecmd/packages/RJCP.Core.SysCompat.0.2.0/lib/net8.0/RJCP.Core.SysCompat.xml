@@ -1,0 +1,1571 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RJCP.Core.SysCompat</name>
+    </assembly>
+    <members>
+        <member name="T:System.ThrowHelper">
+            <summary>
+            Backwards compatible classes for throw helpers.
+            </summary>
+            <remarks>
+            If using with .NET Core 6.0 or later without considering .NET Framework source compatibility, then use the
+            native implementations instead.
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNull(System.Object,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentNullException"/> if <paramref name="argument"/> is <see langword="null"/>.
+            </summary>
+            <param name="argument">The reference type argument to validate as not <see langword="null"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="argument"/> is <see langword="null"/>.</exception>
+            <remarks>
+            Is used to implement CA1510.
+            <para>
+            If using with .NET Core 6.0 or later without considering .NET Framework source compatibility, then use
+            <c>ArgumentNullException.ThrowIfNull</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNullOrEmpty(System.String,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentException"/> if <paramref name="argument"/> is an empty string.
+            </summary>
+            <param name="argument">The reference type argument to validate as not empty.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="argument"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">string 'paramName' is empty.</exception>
+            <remarks>
+            <para>
+            If using with .NET Core 6.0 or later without considering .NET Framework source compatibility, then use
+            <c>ArgumentException.ThrowIfNullOrEmpty</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNullOrEmptyMsg(System.String,System.String,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentException"/> if <paramref name="argument"/> is an empty string.
+            </summary>
+            <param name="message">The message to use in the exception.</param>
+            <param name="argument">The reference type argument to validate as not empty.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="argument"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">string 'paramName' is empty.</exception>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNullOrWhiteSpace(System.String,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentException"/> if <paramref name="argument"/> is an empty string or whitespace.
+            </summary>
+            <param name="argument">The reference type argument to validate as not empty or whitespace.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="argument"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">string 'paramName' is empty or whitespace.</exception>
+            <remarks>
+            <para>
+            If using with .NET Core 6.0 or later without considering .NET Framework source compatibility, then use
+            <c>ArgumentException.ThrowIfNullOrWhiteSpace</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNullOrWhiteSpaceMsg(System.String,System.String,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentException"/> if <paramref name="argument"/> is an empty string or whitespace.
+            </summary>
+            <param name="message">The message to use in the exception.</param>
+            <param name="argument">The reference type argument to validate as not empty or whitespace.</param>
+            <param name="paramName">Name of the parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="argument"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">string 'paramName' is empty or whitespace.</exception>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfZero(System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfZero(System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfZero(System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfZero(System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfZero(System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfZero(System.UInt32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfZero(System.UInt64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfZero(System.UIntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNegative(System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.
+            </summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNegative</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNegative(System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.
+            </summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNegative</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNegative(System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.
+            </summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNegative</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNegative(System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.
+            </summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNegative</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNegative(System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative.
+            </summary>
+            <param name="value">The argument to validate as non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNegative</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNegativeOrZero(System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNegativeOrZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNegativeOrZero(System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNegativeOrZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNegativeOrZero(System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNegativeOrZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNegativeOrZero(System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNegativeOrZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNegativeOrZero(System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is negative or zero.
+            </summary>
+            <param name="value">The argument to validate as non-zero or non-negative.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNegativeOrZero</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEqual``1(``0,``0,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEqual(System.Int32,System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEqual(System.Int64,System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEqual(System.IntPtr,System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEqual(System.Single,System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEqual(System.Double,System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEqual(System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEqual(System.UInt64,System.UInt64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEqual(System.UIntPtr,System.UIntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotEqual``1(``0,``0,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNotEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotEqual(System.Int32,System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNotEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotEqual(System.Int64,System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNotEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotEqual(System.IntPtr,System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNotEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotEqual(System.Single,System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNotEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotEqual(System.Double,System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNotEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotEqual(System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNotEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotEqual(System.UInt64,System.UInt64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNotEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotEqual(System.UIntPtr,System.UIntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfNotEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThan``1(``0,``0,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThan(System.Int32,System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThan(System.Int64,System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThan(System.IntPtr,System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThan(System.Single,System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThan(System.Double,System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThan(System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThan(System.UInt64,System.UInt64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThan(System.UIntPtr,System.UIntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThanOrEqual``1(``0,``0,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThanOrEqual(System.Int32,System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThanOrEqual(System.Int64,System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThanOrEqual(System.IntPtr,System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThanOrEqual(System.Single,System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThanOrEqual(System.Double,System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThanOrEqual(System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThanOrEqual(System.UInt64,System.UInt64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfGreaterThanOrEqual(System.UIntPtr,System.UIntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThan``1(``0,``0,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThan(System.Int32,System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThan(System.Int64,System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThan(System.IntPtr,System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThan(System.Single,System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThan(System.Double,System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThan(System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThan(System.UInt64,System.UInt64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThan(System.UIntPtr,System.UIntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than or equal to <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThan</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThanOrEqual``1(``0,``0,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThanOrEqual(System.Int32,System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThanOrEqual(System.Int64,System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThanOrEqual(System.IntPtr,System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThanOrEqual(System.Single,System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThanOrEqual(System.Double,System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThanOrEqual(System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThanOrEqual(System.UInt64,System.UInt64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfLessThanOrEqual(System.UIntPtr,System.UIntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal
+            <paramref name="other"/>.
+            </summary>
+            <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
+            <param name="other">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+            <remarks>
+            Is used to implement CA1512.
+            <para>
+            If using with .NET Core 8.0 or later without considering source compatibility to older versions, then use
+            <c>ArgumentOutOfRangeException.ThrowIfLessThanOrEqual</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfBetween``1(``0,``0,``0,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfBetween(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfBetween(System.Int64,System.Int64,System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfBetween(System.IntPtr,System.IntPtr,System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfBetween(System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfBetween(System.Double,System.Double,System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfBetween(System.UInt32,System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfBetween(System.UInt64,System.UInt64,System.UInt64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfBetween(System.UIntPtr,System.UIntPtr,System.UIntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotBetween``1(``0,``0,``0,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotBetween(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotBetween(System.Int64,System.Int64,System.Int64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotBetween(System.IntPtr,System.IntPtr,System.IntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotBetween(System.Single,System.Single,System.Single,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotBetween(System.Double,System.Double,System.Double,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotBetween(System.UInt32,System.UInt32,System.UInt32,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotBetween(System.UInt64,System.UInt64,System.UInt64,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfNotBetween(System.UIntPtr,System.UIntPtr,System.UIntPtr,System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentOutOfRangeException"/> if <paramref name="value"/> is between
+            <paramref name="lower"/> and <paramref name="upper"/>.
+            </summary>
+            <param name="value">
+            The argument to validate as note between <paramref name="lower"/> and <paramref name="upper"/>.
+            </param>
+            <param name="lower">The value to compare with <paramref name="value"/>.</param>
+            <param name="upper">The value to compare with <paramref name="value"/>.</param>
+            <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfArrayEmpty``1(``0[],System.String)">
+            <summary>
+            Throws an <see cref="T:System.ArgumentException"/> if the <paramref name="array"/> is of length zero.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array">The array to validate against.</param>
+            <param name="arrayName">The name of the <paramref name="array"/> parameter.</param>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="array"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentException">The <paramref name="array"/> has a length of zero.</exception>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfArrayOutOfBounds``1(``0[],System.Int32,System.String,System.String)">
+            <summary>
+            Throws an exception if <paramref name="index"/> is out of bounds for <paramref name="array"/>.
+            </summary>
+            <typeparam name="T">A generic type for a single ranked array.</typeparam>
+            <param name="array">The array to validate against.</param>
+            <param name="index">The index to validate as being in <paramref name="array"/>.</param>
+            <param name="arrayName">The name of the <paramref name="array"/> parameter.</param>
+            <param name="indexName">The name of the <paramref name="index"/> parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="array"/> is <see langword="null"/>..</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="index"/> is less than zero, or exceeds the boundary of <paramref name="array"/>.
+            </exception>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfArrayOutOfBounds``1(``0[],System.Int64,System.String,System.String)">
+            <summary>
+            Throws an exception if <paramref name="index"/> is out of bounds for <paramref name="array"/>.
+            </summary>
+            <typeparam name="T">A generic type for a single ranked array.</typeparam>
+            <param name="array">The array to validate against.</param>
+            <param name="index">The index to validate as being in <paramref name="array"/>.</param>
+            <param name="arrayName">The name of the <paramref name="array"/> parameter.</param>
+            <param name="indexName">The name of the <paramref name="index"/> parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="array"/> is <see langword="null"/>..</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            The <paramref name="index"/> is less than zero, or exceeds the boundary of <paramref name="array"/>.
+            </exception>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfArrayOutOfBounds``1(``0[],System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Throws an exception if <paramref name="offset"/> or <paramref name="length"/> can cause an out of bounds
+            access to <paramref name="array"/>.
+            </summary>
+            <typeparam name="T">A generic type for a single ranked array.</typeparam>
+            <param name="array">The array to validate against.</param>
+            <param name="offset">The index to validate as being in <paramref name="array"/>.</param>
+            <param name="length">
+            The length to validate as being in bounds with <paramref name="offset"/> within <paramref name="array"/>.
+            </param>
+            <param name="arrayName">Name of the <paramref name="array"/> parameter.</param>
+            <param name="offsetName">Name of the <paramref name="offset"/> parameter.</param>
+            <param name="lengthName">Name of the <paramref name="length"/> parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="array"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="offset"/> is must be zero or positive;
+            <para>- or -</para>
+            <paramref name="length"/> is must be zero or positive.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="array"/> out of bounds access with <paramref name="offset"/> and <paramref name="length"/>
+            exceeding the array length.
+            </exception>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfArrayOutOfBounds``1(``0[],System.Int64,System.Int64,System.String,System.String,System.String)">
+            <summary>
+            Throws an exception if <paramref name="offset"/> or <paramref name="length"/> can cause an out of bounds
+            access to <paramref name="array"/>.
+            </summary>
+            <typeparam name="T">A generic type for a single ranked array.</typeparam>
+            <param name="array">The array to validate against.</param>
+            <param name="offset">The index to validate as being in <paramref name="array"/>.</param>
+            <param name="length">
+            The length to validate as being in bounds with <paramref name="offset"/> within <paramref name="array"/>.
+            </param>
+            <param name="arrayName">Name of the <paramref name="array"/> parameter.</param>
+            <param name="offsetName">Name of the <paramref name="offset"/> parameter.</param>
+            <param name="lengthName">Name of the <paramref name="length"/> parameter.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="array"/> is <see langword="null"/>.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="offset"/> is must be zero or positive;
+            <para>- or -</para>
+            <paramref name="length"/> is must be zero or positive.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="array"/> out of bounds access with <paramref name="offset"/> and <paramref name="length"/>
+            exceeding the array length.
+            </exception>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEnumUndefined``1(``0,System.String)">
+            <summary>
+            Throws an exception if the enumeration value is not defined.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:System.Enum"/></typeparam>
+            <param name="value">The value to validate if it is defined within the enumeration.</param>
+            <param name="paramName">Name of the <paramref name="value"/> parameter.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="paramName"/> of enum is undefined.</exception>
+            <remarks>
+            Raises an exception if the value is not defined in the enumeration. For enumerations that have flags, the
+            exception will be raised if the value doesn't match to a single entry in the enumeration.
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfEnumHasNoFlag``1(``0,``0,System.String)">
+            <summary>
+            Throws an exception if the enumeration value is missing a flag.
+            </summary>
+            <typeparam name="T">The type of the <see cref="T:System.Enum"/></typeparam>
+            <param name="value">The value to validate if it is defined within the enumeration.</param>
+            <param name="flag">The flag to test against.</param>
+            <param name="paramName">Name of the <paramref name="value"/> parameter.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="paramName"/> of enum is missing flag <paramref name="flag"/>.
+            </exception>
+            <remarks>
+            Raises an exception if the value is not defined in the enumeration. For enumerations that have flags, the
+            exception will be raised if the value doesn't match to a single entry in the enumeration.
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfDisposed(System.Boolean,System.Type)">
+            <summary>
+            Throws an <see cref="T:System.ObjectDisposedException"/> if the specified <paramref name="condition"/> is
+            <see langword="true"/>.
+            </summary>
+            <param name="condition">The condition to evaluate.</param>
+            <param name="type">
+            The type whose full name should be included in any resulting <see cref="T:System.ObjectDisposedException"/>.
+            </param>
+            <exception cref="T:System.ObjectDisposedException">
+            The <paramref name="condition"/> is <see langword="true"/>.
+            </exception>
+            <remarks>
+            Is used to implement CA1513.
+            <para>
+            If using with .NET Core 7.0 or later without considering source compatibility to older versions, then use
+            <c>ObjectDisposedException.ThrowIf</c> instead.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:System.ThrowHelper.ThrowIfDisposed(System.Boolean,System.Object)">
+            <summary>
+            Throws an <see cref="T:System.ObjectDisposedException"/> if the specified <paramref name="condition"/> is
+            <see langword="true"/>.
+            </summary>
+            <param name="condition">The condition to evaluate.</param>
+            <param name="instance">
+            The object whose type's full name should be included in any resulting <see cref="T:System.ObjectDisposedException"/>.
+            </param>
+            <exception cref="T:System.ObjectDisposedException">
+            The <paramref name="condition"/> is <see langword="true"/>.
+            </exception>
+            <remarks>
+            Is used to implement CA1513.
+            <para>
+            If using with .NET Core 7.0 or later without considering source compatibility to older versions, then use
+            <c>ObjectDisposedException.ThrowIf</c> instead.
+            </para>
+            </remarks>
+        </member>
+    </members>
+</doc>

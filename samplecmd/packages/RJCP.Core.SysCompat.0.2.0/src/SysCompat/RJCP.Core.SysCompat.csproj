@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net40;net462;net6.0;net8.0</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <Configurations>Debug;Release</Configurations>
+    <NeutralLanguage>en-US</NeutralLanguage>
+
+    <AssemblyName>RJCP.Core.SysCompat</AssemblyName>
+    <AssemblyTitle>RJCP.Core.SysCompat</AssemblyTitle>
+    <Product>RJCP.Core.SysCompat</Product>
+    <RootNamespace></RootNamespace>
+
+    <Authors>Jason Curl</Authors>
+    <Copyright>(C) 2024, Jason Curl</Copyright>
+    <Company></Company>
+    <PackageId>RJCP.Core.SysCompat</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/jcurl/RJCP.DLL.Environment</PackageProjectUrl>
+    <Description>Provide classes for multitargetting .NET Framework and .NET Core.</Description>
+    <Version>0.2.0</Version>
+
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>Default</AnalysisMode>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <LangVersion Condition="$(TargetFramework.StartsWith('net4'))">10</LangVersion>
+
+    <RevisionControl>git</RevisionControl>
+    <RevisionControlLabel>release/syscomp/v$(Version)</RevisionControlLabel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug'">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <RevisionControlStrict>true</RevisionControlStrict>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RJCP.MSBuildTasks" Version="0.2.4" PrivateAssets="all" />
+    <PackageReference Include="CSharpIsNullAnalyzer" Version="0.1.495" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\ThrowHelper+ArgumentNullException.cs" />
+    <Compile Include="System\ThrowHelper+ArgumentOutOfRangeException.cs" />
+    <Compile Include="System\ThrowHelper+Array.cs" />
+    <Compile Include="System\ThrowHelper+Enum.cs" />
+    <Compile Include="System\ThrowHelper+ObjectDisposedException.cs" />
+    <None Include="System\Diagnostics\CodeAnalysis\DoesNotReturnAttribute.cs" />
+    <None Include="System\Runtime\CompilerServices\CallerArgumentExpressionAttribute.cs" />
+    <None Include="System\Runtime\Versioning\OSPlatformAttribute.cs" />
+    <None Include="System\Runtime\Versioning\SupportedOSPlatformAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">
+    <Compile Include="System\Diagnostics\CodeAnalysis\DoesNotReturnAttribute.cs" />
+    <Compile Include="System\Runtime\CompilerServices\CallerArgumentExpressionAttribute.cs" />
+    <Compile Include="System\Runtime\Versioning\OSPlatformAttribute.cs" />
+    <Compile Include="System\Runtime\Versioning\SupportedOSPlatformAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md" Pack="true" PackagePath="\" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+E:\Vstudio Csharp\source\repos\Serial Port\samplecmd\bin\Debug\samplecmd.dll
+E:\Vstudio Csharp\source\repos\Serial Port\samplecmd\bin\Debug\samplecmd.pdb
+E:\Vstudio Csharp\source\repos\Serial Port\samplecmd\obj\Debug\samplecmd.csproj.AssemblyReference.cache
+E:\Vstudio Csharp\source\repos\Serial Port\samplecmd\obj\Debug\samplecmd.csproj.CoreCompileInputs.cache
+E:\Vstudio Csharp\source\repos\Serial Port\samplecmd\obj\Debug\samplecmd.dll
+E:\Vstudio Csharp\source\repos\Serial Port\samplecmd\obj\Debug\samplecmd.pdb
+E:\Vstudio Csharp\source\repos\Serial Port - github version\samplecmd\bin\Debug\samplecmd.dll
+E:\Vstudio Csharp\source\repos\Serial Port - github version\samplecmd\bin\Debug\samplecmd.pdb
+E:\Vstudio Csharp\source\repos\Serial Port - github version\samplecmd\obj\Debug\samplecmd.csproj.AssemblyReference.cache
+E:\Vstudio Csharp\source\repos\Serial Port - github version\samplecmd\obj\Debug\samplecmd.csproj.CoreCompileInputs.cache
+E:\Vstudio Csharp\source\repos\Serial Port - github version\samplecmd\obj\Debug\samplecmd.dll
+E:\Vstudio Csharp\source\repos\Serial Port - github version\samplecmd\obj\Debug\samplecmd.pdb
