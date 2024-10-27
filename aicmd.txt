@@ -1,0 +1,9 @@
+input,response,recomment
+ ,User name,root
+root,password,mduadmin
+mduadmin,user name,root
+root,password,admin123
+admin123,5616>,enable
+enable,5616#,config
+config,5616(config)#,display ip interface brief
+display ip interface brief,<k>, 
