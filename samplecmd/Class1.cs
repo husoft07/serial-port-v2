@@ -30,17 +30,17 @@ namespace samplecmd
             ToolStripMenuItem submenu5 = new ToolStripMenuItem("submenu5");
             ToolStripMenuItem submenu6 = new ToolStripMenuItem("submenu6");
 
-            // Nokia menüsüne "7353isam" alt menüsü ekleniyor
+            // Mymenu menüsüne "submenu" alt menüsü ekleniyor
             Mymenu.DropDownItems.Add(submenu1);
             Mymenu.DropDownItems.Add(submenu2);
             Mymenu2.DropDownItems.Add(submenu3);
             Mymenu2.DropDownItems.Add(submenu4);
             Mymenu3.DropDownItems.Add(submenu5);
             Mymenu3.DropDownItems.Add(submenu6);
-            //isamMenuHUA566165818.DropDownItems.Add(pingmenu);
+            
 
 
-            // Nokia, Huawei ve ZTE menü öğelerine tıklama olayları ekleniyor
+            //menü öğelerine tıklama olayları ekleniyor
             submenu1.Click += Submenu1_Click;
             submenu2.Click += Submenu2_Click;
             submenu3.Click += Submenu3_Click;

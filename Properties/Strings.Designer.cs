@@ -232,6 +232,15 @@ namespace Serial_Port.Properties {
         }
         
         /// <summary>
+        ///   File not found benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string file_not_found {
+            get {
+                return ResourceManager.GetString("file_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Please select file benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string file_select_message {
@@ -340,6 +349,15 @@ namespace Serial_Port.Properties {
         }
         
         /// <summary>
+        ///   You have changed the language. Do you want to restart the application? benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string language_change {
+            get {
+                return ResourceManager.GetString("language_change", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Move Down benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string move_down {
@@ -399,6 +417,15 @@ namespace Serial_Port.Properties {
         internal static string preconfig {
             get {
                 return ResourceManager.GetString("preconfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   You are outside the allowed range. benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string range_error {
+            get {
+                return ResourceManager.GetString("range_error", resourceCulture);
             }
         }
         
@@ -480,6 +507,15 @@ namespace Serial_Port.Properties {
         internal static string select_row {
             get {
                 return ResourceManager.GetString("select_row", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   select a row to start benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string select_row1 {
+            get {
+                return ResourceManager.GetString("select_row1", resourceCulture);
             }
         }
         

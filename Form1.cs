@@ -25,7 +25,7 @@ namespace Serial_Port
                 System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Lang);
             langset();
             LoadLanguages();
-            try { getportlist(); } catch { MessageBox.Show("bağlı port bulunamadı"); }           
+            getportlist();           
             componentload();
             LoadfilepathItems();
             LoadDataControls();
@@ -317,9 +317,11 @@ namespace Serial_Port
                     portlist_tscb.Items.Add(port);
 
                 }
+                if (portlist_tscb.Items.Count > 0) { portlist_tscb.SelectedIndex = 0; }
 
-                portlist_tscb.SelectedIndex = 0;
-            }
+                else { MessageBox.Show(Properties.Strings.port_error); }
+
+                }
             catch (Exception ex)
             { MessageBox.Show(Properties.Strings.port_error + " " + ex); }
         }
@@ -350,8 +352,8 @@ namespace Serial_Port
         private void langs_tstrip_cb1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Kullanıcıya uygulamayı yeniden başlatması gerektiğini soran bir mesaj kutusu gösteriyoruz
-            DialogResult result = MessageBox.Show("Dil değişikliği yaptınız. Uygulamayı yeniden başlatmak istiyor musunuz?",
-                                                  "Uyarı",
+            DialogResult result = MessageBox.Show(Properties.Strings.language_change,
+                                                  Properties.Strings.warning,
                                                   MessageBoxButtons.OKCancel,
                                                   MessageBoxIcon.Warning);
 
@@ -415,10 +417,10 @@ namespace Serial_Port
 
 
             if (e.KeyCode == Keys.Enter)
-                {
+            {
                 e.SuppressKeyPress = true; // Enter tuşunun TextBox'a yeni satır eklemesini engelle
                 if (serialPort1.IsOpen)
-                    {
+                {
                     string endline = "";
 
                     switch (Endline_cb.SelectedIndex)
@@ -436,19 +438,22 @@ namespace Serial_Port
                             endline = "";       // No endline
                             break;
                     }
-                    // Komut sonu endline karakteri eklenmez, sadece komut gönderilir
+
                     string command = clitbox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
-                        serialPort1.Write(command+endline); // WriteLine yerine Write kullanılıyor
-                        clitbox.AppendText(">> " + command + Environment.NewLine);
-                        clitbox.SelectionStart = clitbox.Text.Length;
-                        clitbox.ScrollToCaret();
-                    }
-                    else
+                    if (command.StartsWith(">>"))
                     {
-                        MessageBox.Show("Seri port açık değil.");
+                        command = command.Substring(2).Trim(); // Başlangıçtaki ">>" işaretini ve boşlukları kaldır
                     }
+
+                    serialPort1.Write(command + endline); // WriteLine yerine Write kullanılıyor
                 }
-           
+                else
+                {
+                    MessageBox.Show(Properties.Strings.port_closed);
+                }
+            }
+
+
 
             if (e.KeyCode == Keys.F2) { cmd_cb.Text = cmd_cb.Text + clitbox.SelectedText; cmd_cb.Focus(); cmd_cb.SelectionStart = cmd_cb.Text.Length; cmd_cb.SelectionLength = 0; }
             if (e.KeyCode == Keys.F12) { saveascommand(); }
@@ -459,11 +464,14 @@ namespace Serial_Port
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            // Gelen veriyi oku
-            string data = serialPort1.ReadExisting();
-
-            // Veriyi UI iş parçacığına etkilemeden doğrudan clitbox'a yazdır
-            Invoke(new Action(() => clitbox.AppendText(data)));
+            string response = serialPort1.ReadExisting();
+            Invoke(new Action(() =>
+            {
+                clitbox.AppendText(response + Environment.NewLine); // Yanıtı yazdır
+                clitbox.AppendText(">>"); // Komutu ve >> işaretini yazdır
+                clitbox.SelectionStart = clitbox.Text.Length;
+                clitbox.ScrollToCaret();
+            }));
         }
 
 
@@ -974,7 +982,7 @@ namespace Serial_Port
 
                 catch (Exception)
                 {
-                    MessageBox.Show("İzin verilen aralığın dışındasınız.");
+                    MessageBox.Show(Properties.Strings.range_error);
                     syslist_cb.SelectedIndex = 0;
                     syslist_cb.Focus();
                 }
@@ -992,7 +1000,7 @@ namespace Serial_Port
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("İzin verilen aralığın dışındasınız.");
+                    MessageBox.Show(Properties.Strings.range_error);
                     syslist_cb.SelectedIndex = syslist_cb.Items.Count - 1;
                     syslist_cb.Focus();
                 }

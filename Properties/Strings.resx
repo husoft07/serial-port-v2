@@ -312,4 +312,16 @@
   <data name="notfound" xml:space="preserve">
     <value>Not Found</value>
   </data>
+  <data name="file_not_found" xml:space="preserve">
+    <value>File not found</value>
+  </data>
+  <data name="select_row1" xml:space="preserve">
+    <value>select a row to start</value>
+  </data>
+  <data name="language_change" xml:space="preserve">
+    <value>You have changed the language. Do you want to restart the application?</value>
+  </data>
+  <data name="range_error" xml:space="preserve">
+    <value>You are outside the allowed range.</value>
+  </data>
 </root>
