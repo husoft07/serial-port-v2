@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using samplecmd;
 
@@ -20,13 +21,13 @@ namespace Serial_Port
         public Main_Form1()
         {
             InitializeComponent();
-            dpi();
+            Dpi();
             System.Threading.Thread.CurrentThread.CurrentCulture =
                 System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(Properties.Settings.Default.Lang);
             langset();
             LoadLanguages();
-            getportlist();           
-            componentload();
+            Getportlist();           
+            Componentload();
             LoadfilepathItems();
             LoadDataControls();
             LoadCommandsFromFile("commands.txt");
@@ -62,11 +63,8 @@ namespace Serial_Port
                         // Menü oluşturmak için samplecmd'deki CreateSampleMenu metodunu çalıştırıyoruz
                         var method = menuHelperType.GetMethod("CreateSampleMenu");
 
-                        if (method != null)
-                        {
-                            // MenuStrip nesnesini parametre olarak gönderiyoruz
-                            method.Invoke(null, new object[] { menuStrip1 });
-                        }
+                        // MenuStrip nesnesini parametre olarak gönderiyoruz
+                        method?.Invoke(null, new object[] { menuStrip1 });
                     }
                 }
                 catch (Exception ex)
@@ -119,7 +117,7 @@ namespace Serial_Port
             this.Controls.Add(suggestionBox); // Öneri kutusunu forma ekle
 
             // ComboBox'ta caret pozisyonunu izlemek için TextChanged olayını ekliyoruz
-            cmd_cb.TextChanged += cmd_cb_TextChanged;
+            cmd_cb.TextChanged += Cmd_cb_TextChanged;
 
             // suggestionBox öğeleri değiştikçe boyutu ayarlama
             suggestionBox.DataSourceChanged += SuggestionBox_DataSourceChanged;
@@ -233,7 +231,7 @@ namespace Serial_Port
         }
 
 
-        public void getconfig()
+        public void Getconfig()
         {
             if (FilePathBox.Text.Length == 0)
             {
@@ -258,7 +256,7 @@ namespace Serial_Port
         }
 
 
-        private void componentload()
+        private void Componentload()
         {
             try
             {
@@ -304,7 +302,7 @@ namespace Serial_Port
 
 
         }
-        private void getportlist()
+        private void Getportlist()
         {
             try
             {
@@ -326,7 +324,7 @@ namespace Serial_Port
             { MessageBox.Show(Properties.Strings.port_error + " " + ex); }
         }
 
-        public void dpi()
+        public void Dpi()
         {
 
             float dx, dy;
@@ -372,7 +370,7 @@ namespace Serial_Port
         }
 
 
-        private void connection_tsbtn_Click(object sender, EventArgs e)
+        private void Connection_tsbtn_Click(object sender, EventArgs e)
         {
 
             if (serialPort1.IsOpen)
@@ -381,12 +379,17 @@ namespace Serial_Port
                 connection_tsbtn.Text = Properties.Strings.connect;
                 connection_tsbtn.BackColor = Color.LightGreen;
                 portlist_tscb.Items.Clear();
-                getportlist();
+                Getportlist();
             }
             else { openport(); }
         }
 
-        private void clitbox_KeyDown(object sender, KeyEventArgs e)
+        public void Clitboxendline()
+        {
+            clitbox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
+        }
+
+        private void Clitbox_KeyDown(object sender, KeyEventArgs e)
         {
             if (suggestionBox.Visible)
             {
@@ -440,12 +443,14 @@ namespace Serial_Port
                     }
 
                     string command = clitbox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
-                    if (command.StartsWith(">>"))
+                    int index = command.IndexOf(">>");
+                    if (index != -1) // Eğer ">>" işareti bulunursa
                     {
-                        command = command.Substring(2).Trim(); // Başlangıçtaki ">>" işaretini ve boşlukları kaldır
+                        command = command.Substring(index + 2).Trim(); // ">>" işaretinden sonrasını al ve boşlukları kaldır
                     }
 
-                    serialPort1.Write(command + endline); // WriteLine yerine Write kullanılıyor
+                    // Komutu seri porta gönder
+                    serialPort1.Write(command + endline);
                 }
                 else
                 {
@@ -455,7 +460,7 @@ namespace Serial_Port
 
 
 
-            if (e.KeyCode == Keys.F2) { cmd_cb.Text = cmd_cb.Text + clitbox.SelectedText; cmd_cb.Focus(); cmd_cb.SelectionStart = cmd_cb.Text.Length; cmd_cb.SelectionLength = 0; }
+            if (e.KeyCode == Keys.F2) { cmd_cb.Text += clitbox.SelectedText; cmd_cb.Focus(); cmd_cb.SelectionStart = cmd_cb.Text.Length; cmd_cb.SelectionLength = 0; }
             if (e.KeyCode == Keys.F12) { saveascommand(); }
         }
 
@@ -477,10 +482,10 @@ namespace Serial_Port
 
         private void portlist_tslabel_Click(object sender, EventArgs e)
         {
-            getportlist();
+            Getportlist();
         }
 
-        private void command_lbox_DragDrop(object sender, DragEventArgs e)
+        private void Command_lbox_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
@@ -488,7 +493,7 @@ namespace Serial_Port
             }
         }
 
-        private void command_lbox_DragEnter(object sender, DragEventArgs e)
+        private void Command_lbox_DragEnter(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             command_lbox.Items.Clear(); // Listbox taki eski veriyi temizler
@@ -510,10 +515,10 @@ namespace Serial_Port
 
         private void FilePathBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            getconfig();
+            Getconfig();
         }
 
-        private void configlist()
+        private void Configlist()
         {
             if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "config"))
             {
@@ -539,7 +544,7 @@ namespace Serial_Port
                 string[] lines = File.ReadAllLines(configFilePath);
                 FilePathBox.Items.AddRange(lines);
             }
-            else { configlist(); }
+            else { Configlist(); }
         }
 
         private void SavefilepathItems()
@@ -583,7 +588,7 @@ namespace Serial_Port
             }
         }
 
-        private void clitbox_DoubleClick(object sender, EventArgs e)
+        private void Clitbox_DoubleClick(object sender, EventArgs e)
         {
             string a = clitbox.SelectedText.Trim();
             cmd_cb.Text = cmd_cb.Text + a + " ";
@@ -605,12 +610,12 @@ namespace Serial_Port
        
 
 
-        private void baudrate_tscb_SelectedIndexChanged(object sender, EventArgs e)
+        private void Baudrate_tscb_SelectedIndexChanged(object sender, EventArgs e)
         {
             baudrateToolStripMenuItem.Text = "Baudrate --> " + baudrate_tscb.Text;
         }
 
-        private void databit_tscb_SelectedIndexChanged(object sender, EventArgs e)
+        private void Databit_tscb_SelectedIndexChanged(object sender, EventArgs e)
         {
             dataBitToolStripMenuItem.Text = "Data Bit --> " + databit_tscb.Text;
         }
@@ -625,7 +630,7 @@ namespace Serial_Port
             stopBitToolStripMenuItem.Text = "Stop Bit --> " + stopbit_tscb.Text;
         }
 
-        private void dtr_tscb_SelectedIndexChanged(object sender, EventArgs e)
+        private void Dtr_tscb_SelectedIndexChanged(object sender, EventArgs e)
         {
             dTREnableToolStripMenuItem.Text = "DTREnable --> " + dtr_tscb.Text;
         }
@@ -742,12 +747,12 @@ namespace Serial_Port
         }
 
 
-        private void autocfg_cmts_Click(object sender, EventArgs e)
+        private void Autocfg_cmts_Click(object sender, EventArgs e)
         {
             otosend();
         }
 
-        private void startselectedrown_cmstrip_Click(object sender, EventArgs e)
+        private void Startselectedrown_cmstrip_Click(object sender, EventArgs e)
         {
             otosend_selectedrow();
         }
@@ -825,8 +830,7 @@ namespace Serial_Port
                     var parts = line.Split('=');
                     if (parts.Length == 2)
                     {
-                        var comboBox = form.Controls.Find(parts[0], true).FirstOrDefault() as ComboBox;
-                        if (comboBox != null && int.TryParse(parts[1], out int selectedIndex))
+                        if (form.Controls.Find(parts[0], true).FirstOrDefault() is ComboBox comboBox && int.TryParse(parts[1], out int selectedIndex))
                         {
                             comboBox.SelectedIndex = selectedIndex;
                         }
@@ -838,7 +842,7 @@ namespace Serial_Port
 
         private void refreshfile_btn_Click(object sender, EventArgs e)
         {
-            configlist();
+            Configlist();
 
         }
 
@@ -885,7 +889,7 @@ namespace Serial_Port
             }
         }
 
-        private void getsyslist_btn_Click(object sender, EventArgs e)
+        private void Getsyslist_btn_Click(object sender, EventArgs e)
         {
             ipinfo();
         }
@@ -922,7 +926,7 @@ namespace Serial_Port
             IPsfound_cb.SelectedIndex = 0;
         }
 
-        private void find()
+        private void Find()
         {
             sysip_cb.Text = string.Empty;
             string searchText = syslist_cb.Text.ToLower();
@@ -964,7 +968,7 @@ namespace Serial_Port
                 e.SuppressKeyPress = true;
                 sysip_cb.Text = string.Empty;
                 sysip_tslb.Text = Properties.Strings.sys_ip;
-                find();
+                Find();
                 sysnamelist();
                 iplist();
                 //comboBox3.Focus();
@@ -976,7 +980,7 @@ namespace Serial_Port
                 e.SuppressKeyPress = true;
                 try
                 {
-                    syslist_cb.SelectedIndex = syslist_cb.SelectedIndex - 1;
+                    syslist_cb.SelectedIndex --;
                     syslist_cb.Focus();
                 }
 
@@ -994,7 +998,7 @@ namespace Serial_Port
                 e.SuppressKeyPress = true;
                 try
                 {
-                    syslist_cb.SelectedIndex = syslist_cb.SelectedIndex + 1;
+                    syslist_cb.SelectedIndex ++ ;
                     syslist_cb.Focus();
 
                 }
@@ -1040,7 +1044,7 @@ namespace Serial_Port
                 sysname_tslb.Text = Properties.Strings.sysname + " --> " + sysfound_cb.Text;
                 sysip_tslb.Text = Properties.Strings.sys_ip + " --> " + IPsfound_cb.Text;
                 sysIP_tb.Text = IPsfound_cb.Text;
-                getwayblock();
+                Getwayblock();
             }
             catch { }
         }
@@ -1079,12 +1083,12 @@ namespace Serial_Port
             }
         }
 
-        private void getway_set_SelectedItemChanged(object sender, EventArgs e)
+        private void Getway_set_SelectedItemChanged(object sender, EventArgs e)
         {
-            getwayblock();
+            Getwayblock();
         }
 
-        private void getwayblock()
+        private void Getwayblock()
         {
             string ipAddress = sysIP_tb.Text;
 
@@ -1110,7 +1114,7 @@ namespace Serial_Port
 
         private void sysIP_tb_TextChanged(object sender, EventArgs e)
         {
-            getwayblock();
+            Getwayblock();
             sysip_cb.Text = sysIP_tb.Text.Trim();
             ipcheck();
 
@@ -1166,7 +1170,7 @@ namespace Serial_Port
             }
         }
 
-        private void command_lbox_KeyDown(object sender, KeyEventArgs e)
+        private void Command_lbox_KeyDown(object sender, KeyEventArgs e)
         {
            
 
@@ -1177,7 +1181,7 @@ namespace Serial_Port
             }
         }
 
-        private void command_lbox_DoubleClick(object sender, EventArgs e)
+        private void Command_lbox_DoubleClick(object sender, EventArgs e)
         {
             try
             {
@@ -1220,7 +1224,7 @@ namespace Serial_Port
             command_lbox.Items.Add(cmd_cb.Text);
         }
 
-        private void saveascmd_cmts_Click(object sender, EventArgs e)
+        private void Saveascmd_cmts_Click(object sender, EventArgs e)
         {
             saveFileDialog1.Filter = Properties.Strings.text_file + " (*.txt)|*.txt|" + Properties.Strings.all_file + "   (*.*)|*.*";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -1242,7 +1246,7 @@ namespace Serial_Port
             }
         }
 
-        private void savecmd_cmts_Click(object sender, EventArgs e)
+        private void Savecmd_cmts_Click(object sender, EventArgs e)
         {
             string selectedFilePath = FilePathBox.Text;
             if (string.IsNullOrEmpty(selectedFilePath))
@@ -1308,12 +1312,12 @@ namespace Serial_Port
             command_lbox.SetSelected(newIndex, true);
         }
 
-        private void moveup_cmts_Click(object sender, EventArgs e)
+        private void Moveup_cmts_Click(object sender, EventArgs e)
         {
             MoveItem(-1);
         }
 
-        private void movedown_cmts_Click(object sender, EventArgs e)
+        private void Movedown_cmts_Click(object sender, EventArgs e)
         {
             MoveItem(1);
         }
@@ -1396,7 +1400,7 @@ namespace Serial_Port
             string[] words = input.Split(' ');
             return words.Last();
         }
-        private void cmd_cb_KeyDown(object sender, KeyEventArgs e)
+        private void Cmd_cb_KeyDown(object sender, KeyEventArgs e)
         {
             
 
@@ -1416,7 +1420,7 @@ namespace Serial_Port
                 else if (e.KeyCode == Keys.Right) // Sağ ok tuşu ile öneriyi seçme
                 {
                     InsertSelectedSuggestion();
-                    cmd_cb.Text = cmd_cb.Text + " ";
+                    cmd_cb.Text += " ";
                     suggestionBox.Visible = false;
                     cmd_cb.SelectionStart = cmd_cb.Text.Length; // İmleci sona al
                     e.Handled = true;
@@ -1435,7 +1439,7 @@ namespace Serial_Port
                         if (cmd_cb.Items.Count > 0)
                         {
                             if (cmd_cb.SelectedIndex <= 0) { cmd_cb.SelectedIndex = cmd_cb.Items.Count - 1; }
-                            else { cmd_cb.SelectedIndex = cmd_cb.SelectedIndex - 1; }
+                            else { cmd_cb.SelectedIndex --; }
                         }
                     }
                     catch { }
@@ -1447,7 +1451,7 @@ namespace Serial_Port
                     try
                     {
                         if (cmd_cb.SelectedIndex == cmd_cb.Items.Count - 1) { cmd_cb.SelectedIndex = 0; }
-                        else { cmd_cb.SelectedIndex = cmd_cb.SelectedIndex + 1; }
+                        else { cmd_cb.SelectedIndex ++; }
                     }
                     catch { }
                 }
@@ -1542,8 +1546,7 @@ namespace Serial_Port
                             if (parts.Length == 4)
                             {
                                 // Label'ı bul ve metni güncelle
-                                var label = this.Controls.Find(labelName, true).FirstOrDefault() as System.Windows.Forms.Label;
-                                if (label != null)
+                                if (this.Controls.Find(labelName, true).FirstOrDefault() is System.Windows.Forms.Label label)
                                 {
                                     label.Text = parts[1].Trim();
                                 }
@@ -1552,8 +1555,7 @@ namespace Serial_Port
                                 var comboBoxValues = parts[2].Split('>')
                                                              .Select(v => v.Trim())
                                                              .ToArray();
-                                var comboBox = this.Controls.Find(comboBoxName, true).FirstOrDefault() as System.Windows.Forms.ComboBox;
-                                if (comboBox != null)
+                                if (this.Controls.Find(comboBoxName, true).FirstOrDefault() is System.Windows.Forms.ComboBox comboBox)
                                 {
                                     comboBox.Items.AddRange(comboBoxValues);
 
@@ -1584,22 +1586,22 @@ namespace Serial_Port
             
         }
 
-        private void define_template_tsmn_Click(object sender, EventArgs e)
+        private void Define_template_tsmn_Click(object sender, EventArgs e)
         {
             defines.sample_defines();
         }
 
-        private void nokiaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NokiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             defines.samplenokiacmd();  
         }
 
-        private void zTEToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ZTEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             defines.sampleztecmd();
         }
 
-        private void huaweiToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HuaweiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             defines.samplehuaweicmd();  
         }
@@ -1630,7 +1632,7 @@ namespace Serial_Port
 
         }
 
-        private void cmd_cb_TextChanged(object sender, EventArgs e)
+        private void Cmd_cb_TextChanged(object sender, EventArgs e)
         {
             string currentText = GetLastWord(cmd_cb.Text);
             
@@ -1680,7 +1682,7 @@ namespace Serial_Port
             return new Point(comboBoxLocation.X + textSize.Width, comboBoxLocation.Y);
         }
 
-        private void cmd_cb_KeyPress(object sender, KeyPressEventArgs e)
+        private void Cmd_cb_KeyPress(object sender, KeyPressEventArgs e)
         {
             try
             {
@@ -1710,47 +1712,44 @@ namespace Serial_Port
             } catch { }
         }
 
-        private void clitbox_KeyPress(object sender, KeyPressEventArgs e)
+        private void Clitbox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            suggestionBox.Visible = true;
             try
             {
-                string currentText = GetLastWord(clitbox.Text);
-
-                if (string.IsNullOrEmpty(currentText))
+                if (serialPort1.IsOpen && e.KeyChar == '?')
                 {
-                    suggestionBox.Visible = false; // Eğer boşsa öneri kutusunu gizle
-                    return;
-                }
-                else { suggestionBox.Visible = true; }
+                    // cmd_cb'ye ? karakterinin yazılmasını engelliyoruz
+                    e.Handled = true;
+                    string command = clitbox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
+                    int index = command.IndexOf(">>");
+                    if (index != -1) // Eğer ">>" işareti bulunursa
+                    {
+                        command = command.Substring(index + 2).Trim(); // ">>" işaretinden sonrasını al ve boşlukları kaldır
+                    }
 
-                var suggestions = GetSuggestions(currentText);
+                    // Komutu seri porta gönder
+                    
 
-                // Eğer öneri varsa işlemi devam ettir, yoksa gizle
-                if (suggestions != null && suggestions.Length > 0)
-                {
-                    // İmlecin konumunu al
-                    int caretIndex = clitbox.SelectionStart;
-                    int textWidth = TextRenderer.MeasureText(clitbox.Text.Substring(0, caretIndex), clitbox.Font).Width;
-                    Point caretPosition = clitbox.PointToScreen(new Point(textWidth, clitbox.ClientRectangle.Height));
-
-                    // Öneri kutusunun konumunu ayarla (10 piksel sağa kaydır)
-                    suggestionBox.Location = new Point(caretPosition.X + 10, caretPosition.Y + 20); // 20 piksel aşağı kaydırabilirsiniz
-                    suggestionBox.Items.Clear();
-                    suggestionBox.Items.AddRange(suggestions.ToArray());
-                    suggestionBox.Visible = true;
-                    suggestionBox.BringToFront();
-                }
-                else
-                {
-                    suggestionBox.Items.Clear();
-                    suggestionBox.Visible = false; // Eğer öneri yoksa kutuyu gizle
+                    // SerialPort'a ? ile komut yazma işlemini gerçekleştiriyoruz
+                    switch (Endline_cb.SelectedIndex)
+                    {
+                        case 0:
+                            serialPort1.Write(command + " ?");
+                            break;
+                        case 1:
+                            serialPort1.Write(command + " ?" + "\r");
+                            break;
+                        case 2:
+                            serialPort1.Write(command + " ?" + "\n");
+                            break;
+                        case 3:
+                            serialPort1.Write(command + " ?" + "\r\n");
+                            break;
+                    }
+                    
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message); // Hata mesajını göster
-            }
+            catch { }
         }
 
 

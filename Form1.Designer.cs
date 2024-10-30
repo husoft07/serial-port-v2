@@ -208,7 +208,7 @@
             // 
             this.baudrate_tscb.Name = "baudrate_tscb";
             this.baudrate_tscb.Size = new System.Drawing.Size(121, 23);
-            this.baudrate_tscb.SelectedIndexChanged += new System.EventHandler(this.baudrate_tscb_SelectedIndexChanged);
+            this.baudrate_tscb.SelectedIndexChanged += new System.EventHandler(this.Baudrate_tscb_SelectedIndexChanged);
             // 
             // dataBitToolStripMenuItem
             // 
@@ -222,7 +222,7 @@
             // 
             this.databit_tscb.Name = "databit_tscb";
             this.databit_tscb.Size = new System.Drawing.Size(121, 23);
-            this.databit_tscb.SelectedIndexChanged += new System.EventHandler(this.databit_tscb_SelectedIndexChanged);
+            this.databit_tscb.SelectedIndexChanged += new System.EventHandler(this.Databit_tscb_SelectedIndexChanged);
             // 
             // parityToolStripMenuItem
             // 
@@ -264,7 +264,7 @@
             // 
             this.dtr_tscb.Name = "dtr_tscb";
             this.dtr_tscb.Size = new System.Drawing.Size(121, 23);
-            this.dtr_tscb.SelectedIndexChanged += new System.EventHandler(this.dtr_tscb_SelectedIndexChanged);
+            this.dtr_tscb.SelectedIndexChanged += new System.EventHandler(this.Dtr_tscb_SelectedIndexChanged);
             // 
             // templates_tsmn
             // 
@@ -292,28 +292,28 @@
             this.nokiaToolStripMenuItem.Name = "nokiaToolStripMenuItem";
             this.nokiaToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.nokiaToolStripMenuItem.Text = "Nokia";
-            this.nokiaToolStripMenuItem.Click += new System.EventHandler(this.nokiaToolStripMenuItem_Click);
+            this.nokiaToolStripMenuItem.Click += new System.EventHandler(this.NokiaToolStripMenuItem_Click);
             // 
             // zTEToolStripMenuItem
             // 
             this.zTEToolStripMenuItem.Name = "zTEToolStripMenuItem";
             this.zTEToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.zTEToolStripMenuItem.Text = "ZTE";
-            this.zTEToolStripMenuItem.Click += new System.EventHandler(this.zTEToolStripMenuItem_Click);
+            this.zTEToolStripMenuItem.Click += new System.EventHandler(this.ZTEToolStripMenuItem_Click);
             // 
             // huaweiToolStripMenuItem
             // 
             this.huaweiToolStripMenuItem.Name = "huaweiToolStripMenuItem";
             this.huaweiToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.huaweiToolStripMenuItem.Text = "Huawei";
-            this.huaweiToolStripMenuItem.Click += new System.EventHandler(this.huaweiToolStripMenuItem_Click);
+            this.huaweiToolStripMenuItem.Click += new System.EventHandler(this.HuaweiToolStripMenuItem_Click);
             // 
             // define_template_tsmn
             // 
             this.define_template_tsmn.Name = "define_template_tsmn";
             this.define_template_tsmn.Size = new System.Drawing.Size(225, 22);
             this.define_template_tsmn.Text = "Örnek Tanım Şablonu";
-            this.define_template_tsmn.Click += new System.EventHandler(this.define_template_tsmn_Click);
+            this.define_template_tsmn.Click += new System.EventHandler(this.Define_template_tsmn_Click);
             // 
             // syslist_template_tsmn
             // 
@@ -421,9 +421,9 @@
             this.clitbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.clitbox.Size = new System.Drawing.Size(824, 696);
             this.clitbox.TabIndex = 0;
-            this.clitbox.DoubleClick += new System.EventHandler(this.clitbox_DoubleClick);
-            this.clitbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clitbox_KeyDown);
-            this.clitbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.clitbox_KeyPress);
+            this.clitbox.DoubleClick += new System.EventHandler(this.Clitbox_DoubleClick);
+            this.clitbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Clitbox_KeyDown);
+            this.clitbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Clitbox_KeyPress);
             // 
             // cmd_cb
             // 
@@ -436,9 +436,9 @@
             this.cmd_cb.Name = "cmd_cb";
             this.cmd_cb.Size = new System.Drawing.Size(824, 29);
             this.cmd_cb.TabIndex = 1;
-            this.cmd_cb.TextChanged += new System.EventHandler(this.cmd_cb_TextChanged);
-            this.cmd_cb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmd_cb_KeyDown);
-            this.cmd_cb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmd_cb_KeyPress);
+            this.cmd_cb.TextChanged += new System.EventHandler(this.Cmd_cb_TextChanged);
+            this.cmd_cb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cmd_cb_KeyDown);
+            this.cmd_cb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cmd_cb_KeyPress);
             // 
             // cmd_cb_menustrip
             // 
@@ -536,7 +536,7 @@
             this.connection_tsbtn.Name = "connection_tsbtn";
             this.connection_tsbtn.Size = new System.Drawing.Size(51, 22);
             this.connection_tsbtn.Text = "Bağlan";
-            this.connection_tsbtn.Click += new System.EventHandler(this.connection_tsbtn_Click);
+            this.connection_tsbtn.Click += new System.EventHandler(this.Connection_tsbtn_Click);
             // 
             // toolStripSeparator1
             // 
@@ -880,7 +880,7 @@
             this.getway_set.Name = "getway_set";
             this.getway_set.Size = new System.Drawing.Size(54, 25);
             this.getway_set.TabIndex = 11;
-            this.getway_set.SelectedItemChanged += new System.EventHandler(this.getway_set_SelectedItemChanged);
+            this.getway_set.SelectedItemChanged += new System.EventHandler(this.Getway_set_SelectedItemChanged);
             // 
             // Devices_cb
             // 
@@ -959,7 +959,7 @@
             this.getsyslist_btn.TabIndex = 3;
             this.getsyslist_btn.Text = "Sistem Listesini Al (uygulamadizini\\config\\syslist.txt)";
             this.getsyslist_btn.UseVisualStyleBackColor = true;
-            this.getsyslist_btn.Click += new System.EventHandler(this.getsyslist_btn_Click);
+            this.getsyslist_btn.Click += new System.EventHandler(this.Getsyslist_btn_Click);
             // 
             // syslist_cb
             // 
@@ -1020,10 +1020,10 @@
             this.command_lbox.ScrollAlwaysVisible = true;
             this.command_lbox.Size = new System.Drawing.Size(449, 602);
             this.command_lbox.TabIndex = 0;
-            this.command_lbox.DragDrop += new System.Windows.Forms.DragEventHandler(this.command_lbox_DragDrop);
-            this.command_lbox.DragEnter += new System.Windows.Forms.DragEventHandler(this.command_lbox_DragEnter);
-            this.command_lbox.DoubleClick += new System.EventHandler(this.command_lbox_DoubleClick);
-            this.command_lbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.command_lbox_KeyDown);
+            this.command_lbox.DragDrop += new System.Windows.Forms.DragEventHandler(this.Command_lbox_DragDrop);
+            this.command_lbox.DragEnter += new System.Windows.Forms.DragEventHandler(this.Command_lbox_DragEnter);
+            this.command_lbox.DoubleClick += new System.EventHandler(this.Command_lbox_DoubleClick);
+            this.command_lbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Command_lbox_KeyDown);
             // 
             // Commandlbox_MenuStrip
             // 
@@ -1048,7 +1048,7 @@
             this.autocfg_cmts.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.autocfg_cmts.Size = new System.Drawing.Size(298, 22);
             this.autocfg_cmts.Text = "Konfigürasyonu Başlat";
-            this.autocfg_cmts.Click += new System.EventHandler(this.autocfg_cmts_Click);
+            this.autocfg_cmts.Click += new System.EventHandler(this.Autocfg_cmts_Click);
             // 
             // startselectedrown_cmstrip
             // 
@@ -1056,7 +1056,7 @@
             this.startselectedrown_cmstrip.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F2)));
             this.startselectedrown_cmstrip.Size = new System.Drawing.Size(298, 22);
             this.startselectedrown_cmstrip.Text = "Seçili Satırdan Başlat";
-            this.startselectedrown_cmstrip.Click += new System.EventHandler(this.startselectedrown_cmstrip_Click);
+            this.startselectedrown_cmstrip.Click += new System.EventHandler(this.Startselectedrown_cmstrip_Click);
             // 
             // Edit_command_cmts
             // 
@@ -1073,7 +1073,7 @@
             | System.Windows.Forms.Keys.S)));
             this.saveascmd_cmts.Size = new System.Drawing.Size(298, 22);
             this.saveascmd_cmts.Text = "Farklı Kaydet";
-            this.saveascmd_cmts.Click += new System.EventHandler(this.saveascmd_cmts_Click);
+            this.saveascmd_cmts.Click += new System.EventHandler(this.Saveascmd_cmts_Click);
             // 
             // savecmd_cmts
             // 
@@ -1081,7 +1081,7 @@
             this.savecmd_cmts.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.savecmd_cmts.Size = new System.Drawing.Size(298, 22);
             this.savecmd_cmts.Text = "Kaydet";
-            this.savecmd_cmts.Click += new System.EventHandler(this.savecmd_cmts_Click);
+            this.savecmd_cmts.Click += new System.EventHandler(this.Savecmd_cmts_Click);
             // 
             // Replace_selected_row_cmts
             // 
@@ -1114,7 +1114,7 @@
             this.moveup_cmts.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.moveup_cmts.Size = new System.Drawing.Size(298, 22);
             this.moveup_cmts.Text = "Yukarı Taşı";
-            this.moveup_cmts.Click += new System.EventHandler(this.moveup_cmts_Click);
+            this.moveup_cmts.Click += new System.EventHandler(this.Moveup_cmts_Click);
             // 
             // movedown_cmts
             // 
@@ -1122,7 +1122,7 @@
             this.movedown_cmts.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.movedown_cmts.Size = new System.Drawing.Size(298, 22);
             this.movedown_cmts.Text = "Aşağı Taşı";
-            this.movedown_cmts.Click += new System.EventHandler(this.movedown_cmts_Click);
+            this.movedown_cmts.Click += new System.EventHandler(this.Movedown_cmts_Click);
             // 
             // startcfg_btn
             // 
