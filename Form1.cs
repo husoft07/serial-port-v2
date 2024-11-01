@@ -467,17 +467,58 @@ namespace Serial_Port
 
 
 
+        private StringBuilder dataBuffer = new StringBuilder();
+
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string response = serialPort1.ReadExisting();
-            Invoke(new Action(() =>
+            dataBuffer.Append(response); // Gelen veriyi biriktir
+
+            // ComboBox'tan seçili sonlandırıcı karakteri alın
+            string selectedEndline = Endline_cb.SelectedItem?.ToString();
+            string endline;
+
+            // Eski stil switch ifadesi kullanarak sonlandırıcı karakteri seç
+            switch (selectedEndline)
             {
-                clitbox.AppendText(response + Environment.NewLine); // Yanıtı yazdır
-                clitbox.AppendText(">>"); // Komutu ve >> işaretini yazdır
-                clitbox.SelectionStart = clitbox.Text.Length;
-                clitbox.ScrollToCaret();
-            }));
+                case "\\r":
+                    endline = "\r";   // Carriage Return
+                    break;
+                case "\\n":
+                    endline = "\n";   // Line Feed
+                    break;
+                case "\\r\\n":
+                    endline = "\r\n"; // Carriage Return + Line Feed
+                    break;
+                case "null":
+                    endline = ""; // Carriage Return + Line Feed
+                    break;
+                default:
+                    endline = Environment.NewLine; // Varsayılan sonlandırıcı
+                    break;
+            }
+
+            // Sonlandırıcı karaktere göre tam satırı kontrol et
+            while (dataBuffer.ToString().Contains(endline))
+            {
+                // Tam satırı alıp işle
+                int endIndex = dataBuffer.ToString().IndexOf(endline) + endline.Length;
+                string completeLine = dataBuffer.ToString(0, endIndex);
+
+                Invoke(new Action(() =>
+                {
+                    clitbox.AppendText(completeLine); // Tam satırı yazdır
+                    clitbox.AppendText(">>");
+                    clitbox.SelectionStart = clitbox.Text.Length;
+                    clitbox.ScrollToCaret();
+                }));
+
+                // İşlenen kısmı buffer'dan kaldır
+                dataBuffer.Remove(0, endIndex);
+            }
         }
+
+
 
 
         private void portlist_tslabel_Click(object sender, EventArgs e)
