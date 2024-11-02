@@ -391,34 +391,7 @@ namespace Serial_Port
 
         private void Clitbox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (suggestionBox.Visible)
-            {
-                // Aşağı/Yukarı yön tuşları ile öneri kutusunda gezinme 
-                if (e.KeyCode == Keys.Down && suggestionBox.SelectedIndex < suggestionBox.Items.Count - 1)
-                {
-                    suggestionBox.SelectedIndex++;
-                    e.Handled = true;
-                }
-                else if (e.KeyCode == Keys.Up && suggestionBox.SelectedIndex > 0)
-                {
-                    suggestionBox.SelectedIndex--;
-                    e.Handled = true;
-                }
-                else if (e.KeyCode == Keys.Right) // Sağ ok tuşu ile öneriyi seçme 
-                {
-                    // TextBox'taki son kelimeyi al ve değiştir
-                    var words = clitbox.Text.Split(' ');
-                    words[words.Length - 1] = suggestionBox.SelectedItem.ToString();
-                    clitbox.Text = string.Join(" ", words);
-
-                    clitbox.Text += " ";
-                    suggestionBox.Visible = false;
-                    clitbox.SelectionStart = clitbox.Text.Length; // İmleci sona al 
-                    e.Handled = true;
-                }
-            }
-
-
+            
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true; // Enter tuşunun TextBox'a yeni satır eklemesini engelle
@@ -440,17 +413,8 @@ namespace Serial_Port
                         default:
                             endline = "";       // No endline
                             break;
-                    }
-
-                    string command = clitbox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
-                    int index = command.IndexOf(">>");
-                    if (index != -1) // Eğer ">>" işareti bulunursa
-                    {
-                        command = command.Substring(index + 2).Trim(); // ">>" işaretinden sonrasını al ve boşlukları kaldır
-                    }
-
-                    // Komutu seri porta gönder
-                    serialPort1.Write(command + endline);
+                    } 
+                    serialPort1.Write(endline); // Satır sonu karakterini seri porta gönder
                 }
                 else
                 {
@@ -472,50 +436,14 @@ namespace Serial_Port
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string response = serialPort1.ReadExisting();
-            dataBuffer.Append(response); // Gelen veriyi biriktir
 
-            // ComboBox'tan seçili sonlandırıcı karakteri alın
-            string selectedEndline = Endline_cb.SelectedItem?.ToString();
-            string endline;
-
-            // Eski stil switch ifadesi kullanarak sonlandırıcı karakteri seç
-            switch (selectedEndline)
+            // Gelen veriyi doğrudan clitbox'a yazdır
+            Invoke(new Action(() =>
             {
-                case "\\r":
-                    endline = "\r";   // Carriage Return
-                    break;
-                case "\\n":
-                    endline = "\n";   // Line Feed
-                    break;
-                case "\\r\\n":
-                    endline = "\r\n"; // Carriage Return + Line Feed
-                    break;
-                case "null":
-                    endline = ""; // Carriage Return + Line Feed
-                    break;
-                default:
-                    endline = Environment.NewLine; // Varsayılan sonlandırıcı
-                    break;
-            }
-
-            // Sonlandırıcı karaktere göre tam satırı kontrol et
-            while (dataBuffer.ToString().Contains(endline))
-            {
-                // Tam satırı alıp işle
-                int endIndex = dataBuffer.ToString().IndexOf(endline) + endline.Length;
-                string completeLine = dataBuffer.ToString(0, endIndex);
-
-                Invoke(new Action(() =>
-                {
-                    clitbox.AppendText(completeLine); // Tam satırı yazdır
-                    clitbox.AppendText(">>");
-                    clitbox.SelectionStart = clitbox.Text.Length;
-                    clitbox.ScrollToCaret();
-                }));
-
-                // İşlenen kısmı buffer'dan kaldır
-                dataBuffer.Remove(0, endIndex);
-            }
+                clitbox.AppendText(response); // Gelen veriyi yazdır
+                clitbox.SelectionStart = clitbox.Text.Length;
+                clitbox.ScrollToCaret();
+            }));
         }
 
 
@@ -1757,36 +1685,36 @@ namespace Serial_Port
         {
             try
             {
+                if (e.KeyChar != (char)Keys.Enter)
+                {
+                    serialPort1.Write(e.KeyChar.ToString());
+                }
+            }
+            catch { }
+
+            try
+            {
                 if (serialPort1.IsOpen && e.KeyChar == '?')
                 {
-                    // cmd_cb'ye ? karakterinin yazılmasını engelliyoruz
-                    e.Handled = true;
-                    string command = clitbox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
-                    int index = command.IndexOf(">>");
-                    if (index != -1) // Eğer ">>" işareti bulunursa
-                    {
-                        command = command.Substring(index + 2).Trim(); // ">>" işaretinden sonrasını al ve boşlukları kaldır
-                    }
+                    e.Handled=true;
+                    string endline = "";
 
-                    // Komutu seri porta gönder
-                    
-
-                    // SerialPort'a ? ile komut yazma işlemini gerçekleştiriyoruz
                     switch (Endline_cb.SelectedIndex)
                     {
-                        case 0:
-                            serialPort1.Write(command + " ?");
-                            break;
                         case 1:
-                            serialPort1.Write(command + " ?" + "\r");
+                            endline = "\r";     // Carriage return
                             break;
                         case 2:
-                            serialPort1.Write(command + " ?" + "\n");
+                            endline = "\n";     // Line feed
                             break;
                         case 3:
-                            serialPort1.Write(command + " ?" + "\r\n");
+                            endline = "\r\n";   // Carriage return + Line feed
+                            break;
+                        default:
+                            endline = "";       // No endline
                             break;
                     }
+                    serialPort1.Write(endline); // Satır sonu karakterini ? işareti ile seri porta gönder
                     
                 }
             }
