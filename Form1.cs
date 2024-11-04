@@ -190,6 +190,8 @@ namespace Serial_Port
         
         private void langset()
         {
+            copyToolStripMenuItem.Text = Properties.Strings.copy;
+            pasteToolStripMenuItem.Text = Properties.Strings.paste;
             lang_tstripmenu1.Text = Properties.Strings.lang;
             connectset_tsmn.Text = Properties.Strings.connect_setting;
             help_tsmn.Text = Properties.Strings.help;
@@ -389,9 +391,23 @@ namespace Serial_Port
             clitbox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
         }
 
+        private void Clitbox_SetCursorToEnd(object sender, EventArgs e)
+        {
+            clitbox.SelectionStart = clitbox.Text.Length; // İmleci metnin sonuna ayarla
+            clitbox.SelectionLength = 0;                   // Seçim yapmadan imleci ayarla
+            clitbox.ScrollToCaret();                       // İmleci görünür konuma getir
+        }
+
         private void Clitbox_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
+            if (clitbox.SelectionStart != clitbox.Text.Length)
+            {
+                // İmleci sona getir
+                clitbox.SelectionStart = clitbox.Text.Length;
+                clitbox.SelectionLength = 0;
+            }
+
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true; // Enter tuşunun TextBox'a yeni satır eklemesini engelle
@@ -422,6 +438,12 @@ namespace Serial_Port
                 }
             }
 
+            if (e.KeyCode==Keys.Tab||e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            {
+                e.SuppressKeyPress = true; // Tuş basımını devre dışı bırak
+            }
+
+            
 
 
             if (e.KeyCode == Keys.F2) { cmd_cb.Text += clitbox.SelectedText; cmd_cb.Focus(); cmd_cb.SelectionStart = cmd_cb.Text.Length; cmd_cb.SelectionLength = 0; }
@@ -1721,6 +1743,45 @@ namespace Serial_Port
             catch { }
         }
 
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (clitbox.SelectedText.Length > 0)
+            {
+                Clipboard.SetText(clitbox.SelectedText); // Seçili metni kopyala
+            }
+        }
 
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Seri portun açık olup olmadığını kontrol et
+            if (serialPort1.IsOpen)
+            {
+                if (Clipboard.ContainsText())
+                {
+                    string textToPaste = Clipboard.GetText();
+
+                    // Metni daima TextBox'ın sonuna ekle
+                    clitbox.SelectionStart = clitbox.Text.Length; // İmleci sona getir
+                    clitbox.SelectionLength = 0;
+                    clitbox.SelectedText = textToPaste; // Metni mevcut metnin sonuna ekle
+
+                    // Seri porta metni gönder
+                    serialPort1.Write(textToPaste);
+                }
+            }
+            else
+            {
+                MessageBox.Show(Properties.Strings.port_error, Properties.Strings.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void clitbox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                e.IsInputKey = true; // Tab tuşunun özel bir anahtar olarak işlenmesini sağlar
+            }
+
+        }
     }
 }

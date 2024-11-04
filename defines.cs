@@ -50,7 +50,8 @@ val4_lb=""c_type""|1000basetft>100basetxt|0
 val5_lb=""c_type2""|electric>optic>automatic|1
 val6_lb=""test6""|1>2>3>9|3
 val7_lb=""test7""|1>2>3>10|2
-val8_lb=""test8""|1>2>3>11|1";
+val8_lb=""test8""|1>2>3>11|1
+devices_lb=""Aygıtlar""|Dev1(r)>Dev2(n)>Dev3(rn)>Dev4|2";
 
             // Uygulama dizininde config klasörünün yolu
             string configFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "defines");

@@ -324,4 +324,10 @@
   <data name="range_error" xml:space="preserve">
     <value>İzin verilen aralığın dışındasınız.</value>
   </data>
+  <data name="copy" xml:space="preserve">
+    <value>Kopyala</value>
+  </data>
+  <data name="paste" xml:space="preserve">
+    <value>Yapıştır</value>
+  </data>
 </root>

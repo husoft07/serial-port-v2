@@ -169,6 +169,15 @@ namespace Serial_Port.Properties {
         }
         
         /// <summary>
+        ///   Copy benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string copy {
+            get {
+                return ResourceManager.GetString("copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Defines benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string defines {
@@ -381,6 +390,15 @@ namespace Serial_Port.Properties {
         internal static string notfound {
             get {
                 return ResourceManager.GetString("notfound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Paste benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string paste {
+            get {
+                return ResourceManager.GetString("paste", resourceCulture);
             }
         }
         

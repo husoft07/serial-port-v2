@@ -324,4 +324,10 @@
   <data name="range_error" xml:space="preserve">
     <value>You are outside the allowed range.</value>
   </data>
+  <data name="copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
 </root>

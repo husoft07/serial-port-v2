@@ -64,6 +64,9 @@
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.CLIpanel = new System.Windows.Forms.Panel();
             this.clitbox = new System.Windows.Forms.TextBox();
+            this.clitbox_MenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmd_cb = new System.Windows.Forms.ComboBox();
             this.cmd_cb_menustrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.save_cmd_cb_cmts = new System.Windows.Forms.ToolStripMenuItem();
@@ -138,6 +141,7 @@
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.CLIpanel.SuspendLayout();
+            this.clitbox_MenuStrip.SuspendLayout();
             this.cmd_cb_menustrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.setting_panel.SuspendLayout();
@@ -411,6 +415,7 @@
             // clitbox
             // 
             this.clitbox.BackColor = System.Drawing.Color.PapayaWhip;
+            this.clitbox.ContextMenuStrip = this.clitbox_MenuStrip;
             this.clitbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clitbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.clitbox.ForeColor = System.Drawing.SystemColors.Highlight;
@@ -424,6 +429,29 @@
             this.clitbox.DoubleClick += new System.EventHandler(this.Clitbox_DoubleClick);
             this.clitbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Clitbox_KeyDown);
             this.clitbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Clitbox_KeyPress);
+            this.clitbox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.clitbox_PreviewKeyDown);
+            // 
+            // clitbox_MenuStrip
+            // 
+            this.clitbox_MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem});
+            this.clitbox_MenuStrip.Name = "clitbox_MenuStrip";
+            this.clitbox_MenuStrip.Size = new System.Drawing.Size(103, 48);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // cmd_cb
             // 
@@ -1186,6 +1214,7 @@
             this.statusStrip1.PerformLayout();
             this.CLIpanel.ResumeLayout(false);
             this.CLIpanel.PerformLayout();
+            this.clitbox_MenuStrip.ResumeLayout(false);
             this.cmd_cb_menustrip.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -1308,6 +1337,9 @@
         private System.Windows.Forms.ToolStripMenuItem nokiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zTEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem huaweiToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip clitbox_MenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
     }
 }
 
