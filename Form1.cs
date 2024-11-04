@@ -1771,7 +1771,7 @@ namespace Serial_Port
             }
             else
             {
-                MessageBox.Show(Properties.Strings.port_error, Properties.Strings.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Properties.Strings.port_closed, Properties.Strings.warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
