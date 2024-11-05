@@ -5,14 +5,15 @@ using System.Runtime.InteropServices;
 // Bir bütünleştirilmiş koda ilişkin Genel Bilgiler aşağıdaki öznitelikler kümesiyle
 // denetlenir. Bütünleştirilmiş kod ile ilişkili bilgileri değiştirmek için
 // bu öznitelik değerlerini değiştirin.
-[assembly: AssemblyTitle("Serial Port")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Serial Port Communication Utility")]
+[assembly: AssemblyDescription("An application providing serial port communication and command interaction similar to Putty.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Serial Port")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Hüseyin YILMAZ")]
+[assembly: AssemblyProduct("Serial Port Communication Utility v2.0 beta")]
+[assembly: AssemblyCopyright("Copyright © 2024 Husoft07")]
+[assembly: AssemblyTrademark("Husoft07™")]
 [assembly: AssemblyCulture("")]
+
 
 // ComVisible özniteliğinin false olarak ayarlanması bu bütünleştirilmiş koddaki türleri
 // COM bileşenleri için görünmez yapar. Bu bütünleştirilmiş koddaki bir türe
@@ -29,5 +30,5 @@ using System.Runtime.InteropServices;
 //      Yapı Numarası
 //      Düzeltme
 //
-[assembly: AssemblyVersion("2.0.1.2810")]
-[assembly: AssemblyFileVersion("2.0.1.2810")]
+[assembly: AssemblyVersion("2.0.1.0611")]
+[assembly: AssemblyFileVersion("2.0.1.0611")]

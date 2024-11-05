@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // denetlenir. Bütünleştirilmiş kod ile ilişkili bilgileri değiştirmek için
 // bu öznitelik değerlerini değiştirin.
 [assembly: AssemblyTitle("samplecmd")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("An application providing serial port communication and command interaction similar to Putty.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Hüseyin YILMAZ")]
 [assembly: AssemblyProduct("samplecmd")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © 2024 Husoft07")]
+[assembly: AssemblyTrademark("Husoft07™")]
 [assembly: AssemblyCulture("")]
 
 // ComVisible özniteliğinin false olarak ayarlanması bu bütünleştirilmiş koddaki türleri

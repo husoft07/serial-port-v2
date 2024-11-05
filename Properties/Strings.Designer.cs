@@ -97,6 +97,15 @@ namespace Serial_Port.Properties {
         }
         
         /// <summary>
+        ///   Close benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string close {
+            get {
+                return ResourceManager.GetString("close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Command Screen benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string cmd_screen {
@@ -178,6 +187,15 @@ namespace Serial_Port.Properties {
         }
         
         /// <summary>
+        ///   Cut benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string cut {
+            get {
+                return ResourceManager.GetString("cut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Defines benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string defines {
@@ -237,6 +255,15 @@ namespace Serial_Port.Properties {
         internal static string error_select_list {
             get {
                 return ResourceManager.GetString("error_select_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   File benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string file {
+            get {
+                return ResourceManager.GetString("file", resourceCulture);
             }
         }
         

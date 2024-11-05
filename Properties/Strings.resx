@@ -330,4 +330,13 @@
   <data name="paste" xml:space="preserve">
     <value>Paste</value>
   </data>
+  <data name="file" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
 </root>
