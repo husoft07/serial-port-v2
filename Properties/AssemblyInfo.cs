@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 //      Yapı Numarası
 //      Düzeltme
 //
-[assembly: AssemblyVersion("2.0.1.0611")]
-[assembly: AssemblyFileVersion("2.0.1.0611")]
+[assembly: AssemblyVersion("2.0.1.31")]
+[assembly: AssemblyFileVersion("2.0.1.0711")]

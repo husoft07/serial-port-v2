@@ -1709,38 +1709,13 @@ namespace Serial_Port
             {
                 if (e.KeyChar != (char)Keys.Enter)
                 {
+                    e.Handled=true;
                     serialPort1.Write(e.KeyChar.ToString());
                 }
             }
             catch { }
 
-            try
-            {
-                if (serialPort1.IsOpen && e.KeyChar == '?')
-                {
-                    e.Handled=true;
-                    string endline = "";
-
-                    switch (Endline_cb.SelectedIndex)
-                    {
-                        case 1:
-                            endline = "\r";     // Carriage return
-                            break;
-                        case 2:
-                            endline = "\n";     // Line feed
-                            break;
-                        case 3:
-                            endline = "\r\n";   // Carriage return + Line feed
-                            break;
-                        default:
-                            endline = "";       // No endline
-                            break;
-                    }
-                    serialPort1.Write(endline); // Satır sonu karakterini ? işareti ile seri porta gönder
-                    
-                }
-            }
-            catch { }
+            
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
