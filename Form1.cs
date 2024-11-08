@@ -430,7 +430,7 @@ namespace Serial_Port
                             endline = "";       // No endline
                             break;
                     } 
-                    serialPort1.Write(endline); // Satır sonu karakterini seri porta gönder
+                    serialPort1.Write(detectedEndLine); // Satır sonu karakterini seri porta gönder
                 }
                 else
                 {
@@ -438,7 +438,7 @@ namespace Serial_Port
                 }
             }
 
-            if (e.KeyCode==Keys.Tab||e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
             {
                 e.SuppressKeyPress = true; // Tuş basımını devre dışı bırak
             }
@@ -453,19 +453,47 @@ namespace Serial_Port
 
 
 
-        private StringBuilder dataBuffer = new StringBuilder();
+        private string detectedEndLine = ""; // Otomatik algılanan satır sonu karakterini saklar
+
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string response = serialPort1.ReadExisting();
-
-            // Gelen veriyi doğrudan clitbox'a yazdır
-            Invoke(new Action(() =>
+            try
             {
-                clitbox.AppendText(response); // Gelen veriyi yazdır
-                clitbox.SelectionStart = clitbox.Text.Length;
-                clitbox.ScrollToCaret();
-            }));
+                string response = serialPort1.ReadExisting();
+
+                // Satır sonu karakterini otomatik algıla
+                if (detectedEndLine == "")
+                {
+                    if (response.Contains("\r\n"))
+                    {
+                        detectedEndLine = "\r\n";
+                        Invoke(new Action(() => Endline_cb.SelectedIndex = 3));
+                    }
+                    else if (response.Contains("\n"))
+                    {
+                        detectedEndLine = "\n";
+                        Invoke(new Action(() => Endline_cb.SelectedIndex = 2));
+                    }
+                    else if (response.Contains("\r"))
+                    {
+                        detectedEndLine = "\r";
+                        Invoke(new Action(() => Endline_cb.SelectedIndex = 1));
+                    }
+                }
+
+                // Gelen veriyi doğrudan clitbox'a yazdır
+                Invoke(new Action(() =>
+                {
+                    clitbox.AppendText(response); // Gelen veriyi yazdır
+                    clitbox.SelectionStart = clitbox.Text.Length;
+                    clitbox.ScrollToCaret();
+                }));
+            }
+            catch
+            {
+                // Hata durumunu yönet
+            }
         }
 
 
@@ -1605,15 +1633,19 @@ namespace Serial_Port
             {
                 case "\\r":
                     selectedEndline = "\r"; // \r karakterini ata
+                    detectedEndLine = "\r";
                     break;
                 case "\\n":
                     selectedEndline = "\n"; // \n karakterini ata
+                    detectedEndLine = "\n";
                     break;
                 case "\\r\\n":
                     selectedEndline = "\r\n"; // \r\n karakterini ata
+                    detectedEndLine = "\r\n";
                     break;
                 case "null":
                     selectedEndline = ""; // \r\n karakterini ata
+                    detectedEndLine= "";
                     break;
             }
         }
@@ -1707,16 +1739,29 @@ namespace Serial_Port
         {
             try
             {
+                // Enter tuşuna basılmadıysa işlemleri yap
                 if (e.KeyChar != (char)Keys.Enter)
                 {
-                    e.Handled=true;
-                    serialPort1.Write(e.KeyChar.ToString());
+                    e.Handled = true;
+
+                    // Eğer Tab tuşuna basıldıysa '\t' karakteri olarak gönder
+                    if (e.KeyChar == (char)Keys.Tab)
+                    {
+                        serialPort1.Write("\t");
+                    }
+                    else
+                    {
+                        // Diğer karakterler için doğrudan gönder
+                        serialPort1.Write(e.KeyChar.ToString());
+                    }
                 }
             }
-            catch { }
-
-            
+            catch
+            {
+                // Hata oluştuğunda işlemi atla
+            }
         }
+
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
