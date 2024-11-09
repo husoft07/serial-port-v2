@@ -413,24 +413,9 @@ namespace Serial_Port
                 e.SuppressKeyPress = true; // Enter tuşunun TextBox'a yeni satır eklemesini engelle
                 if (serialPort1.IsOpen)
                 {
-                    string endline = "";
-
-                    switch (Endline_cb.SelectedIndex)
-                    {
-                        case 1:
-                            endline = "\r";     // Carriage return
-                            break;
-                        case 2:
-                            endline = "\n";     // Line feed
-                            break;
-                        case 3:
-                            endline = "\r\n";   // Carriage return + Line feed
-                            break;
-                        default:
-                            endline = "";       // No endline
-                            break;
-                    } 
-                    serialPort1.Write(detectedEndLine); // Satır sonu karakterini seri porta gönder
+                     serialPort1.Write(detectedEndLine); // Satır sonu karakterini seri porta gönder
+                } 
+                   
                 }
                 else
                 {
@@ -438,7 +423,7 @@ namespace Serial_Port
                 }
             }
 
-            if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            if (e.KeyCode == Keys.Tab ||e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
             {
                 e.SuppressKeyPress = true; // Tuş basımını devre dışı bırak
             }
@@ -446,8 +431,8 @@ namespace Serial_Port
             
 
 
-            if (e.KeyCode == Keys.F2) { cmd_cb.Text += clitbox.SelectedText; cmd_cb.Focus(); cmd_cb.SelectionStart = cmd_cb.Text.Length; cmd_cb.SelectionLength = 0; }
-            if (e.KeyCode == Keys.F12) { saveascommand(); }
+           // if (e.KeyCode == Keys.F2) { cmd_cb.Text += clitbox.SelectedText; cmd_cb.Focus(); cmd_cb.SelectionStart = cmd_cb.Text.Length; cmd_cb.SelectionLength = 0; }
+          //  if (e.KeyCode == Keys.F12) { saveascommand(); }
         }
 
 
@@ -1711,25 +1696,8 @@ namespace Serial_Port
             {
                 if (serialPort1.IsOpen && e.KeyChar == '?')
                 {
-                    // cmd_cb'ye ? karakterinin yazılmasını engelliyoruz
-                    e.Handled = true;
-
                     // SerialPort'a ? ile komut yazma işlemini gerçekleştiriyoruz
-                    switch (Endline_cb.SelectedIndex)
-                    {
-                        case 0:
-                            serialPort1.Write(cmd_cb.Text + " ?");
-                            break;
-                        case 1:
-                            serialPort1.Write(cmd_cb.Text + " ?" + "\r");
-                            break;
-                        case 2:
-                            serialPort1.Write(cmd_cb.Text + " ?" + "\n");
-                            break;
-                        case 3:
-                            serialPort1.Write(cmd_cb.Text + " ?" + "\r\n");
-                            break;
-                    }
+                    serialPort1.Write(cmd_cb.Text);
                     cmd_cb.Text=string.Empty;
                 }
             } catch { }
