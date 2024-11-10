@@ -416,12 +416,12 @@ namespace Serial_Port
                      serialPort1.Write(detectedEndLine); // Satır sonu karakterini seri porta gönder
                 } 
                    
-                }
+            }
                 else
                 {
                     MessageBox.Show(Properties.Strings.port_closed);
                 }
-            }
+            
 
             if (e.KeyCode == Keys.Tab ||e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
             {
