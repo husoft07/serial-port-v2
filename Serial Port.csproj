@@ -7,7 +7,7 @@
     <ProjectGuid>{F9732546-06DB-4E60-80E4-9BC868113564}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Serial_Port</RootNamespace>
-    <AssemblyName>Serial Port Communication Utility v2.0 beta</AssemblyName>
+    <AssemblyName>Serial Port Communication Utility v2.0</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -25,7 +25,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>33</ApplicationRevision>
+    <ApplicationRevision>34</ApplicationRevision>
     <ApplicationVersion>2.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
