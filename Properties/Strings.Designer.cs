@@ -97,6 +97,15 @@ namespace Serial_Port.Properties {
         }
         
         /// <summary>
+        ///   Save as CLI Panel benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string cli_screen_save {
+            get {
+                return ResourceManager.GetString("cli_screen_save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Close benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         internal static string close {
@@ -561,6 +570,15 @@ namespace Serial_Port.Properties {
         internal static string select_row1 {
             get {
                 return ResourceManager.GetString("select_row1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Send to command line for editing benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        internal static string send_selected_cmd_line {
+            get {
+                return ResourceManager.GetString("send_selected_cmd_line", resourceCulture);
             }
         }
         

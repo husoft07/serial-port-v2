@@ -339,4 +339,10 @@
   <data name="cut" xml:space="preserve">
     <value>Cut</value>
   </data>
+  <data name="cli_screen_save" xml:space="preserve">
+    <value>Save as CLI Panel</value>
+  </data>
+  <data name="send_selected_cmd_line" xml:space="preserve">
+    <value>Send to command line for editing</value>
+  </data>
 </root>

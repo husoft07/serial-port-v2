@@ -339,4 +339,10 @@
   <data name="cut" xml:space="preserve">
     <value>Kes</value>
   </data>
+  <data name="cli_screen_save" xml:space="preserve">
+    <value>CLI ekranını kaydet</value>
+  </data>
+  <data name="send_selected_cmd_line" xml:space="preserve">
+    <value>Düzenlemek için komut satırına gönder</value>
+  </data>
 </root>

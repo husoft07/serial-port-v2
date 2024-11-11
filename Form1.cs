@@ -190,6 +190,8 @@ namespace Serial_Port
         
         private void langset()
         {
+            saveAsCLIPanelToolStripMenuItem.Text = Properties.Strings.cli_screen_save;
+            sendCMDLineForEditToolStripMenuItem.Text = Properties.Strings.send_selected_cmd_line;
             copyToolStripMenuItem.Text = Properties.Strings.copy;
             pasteToolStripMenuItem.Text = Properties.Strings.paste;
             lang_tstripmenu1.Text = Properties.Strings.lang;
@@ -386,17 +388,7 @@ namespace Serial_Port
             else { openport(); }
         }
 
-        public void Clitboxendline()
-        {
-            clitbox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
-        }
 
-        private void Clitbox_SetCursorToEnd(object sender, EventArgs e)
-        {
-            clitbox.SelectionStart = clitbox.Text.Length; // İmleci metnin sonuna ayarla
-            clitbox.SelectionLength = 0;                   // Seçim yapmadan imleci ayarla
-            clitbox.ScrollToCaret();                       // İmleci görünür konuma getir
-        }
 
         private void Clitbox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -413,14 +405,20 @@ namespace Serial_Port
                 e.SuppressKeyPress = true; // Enter tuşunun TextBox'a yeni satır eklemesini engelle
                 if (serialPort1.IsOpen)
                 {
-                     serialPort1.Write(detectedEndLine); // Satır sonu karakterini seri porta gönder
-                } 
-                   
-            }
+                    if (detectedEndLine=="") { serialPort1.Write("t"); }
+                    else 
+                    { 
+                    serialPort1.Write(detectedEndLine);// Satır sonu karakterini seri porta gönder
+                    }
+                }
+
                 else
                 {
                     MessageBox.Show(Properties.Strings.port_closed);
                 }
+
+            }
+                
             
 
             if (e.KeyCode == Keys.Tab ||e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
@@ -669,9 +667,9 @@ namespace Serial_Port
                         string command = firstPart.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
                         serialPort1.Write(command);
 
-                        if (!string.IsNullOrEmpty(selectedEndline))
+                        if (!string.IsNullOrEmpty(detectedEndLine))
                         {
-                            serialPort1.Write(selectedEndline); // Satır sonu karakterini gönder
+                            serialPort1.Write(detectedEndLine); // Satır sonu karakterini gönder
                         }
 
                         if (i == itemCount - 1)
@@ -723,9 +721,9 @@ namespace Serial_Port
                             string command = firstPart.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
                             serialPort1.Write(command);
 
-                            if (!string.IsNullOrEmpty(selectedEndline))
+                            if (!string.IsNullOrEmpty(detectedEndLine))
                             {
-                                serialPort1.Write(selectedEndline); // Satır sonu karakterini gönder
+                                serialPort1.Write(detectedEndLine); // Satır sonu karakterini gönder
                             }
 
                             if (i == itemCount - 1)
@@ -1199,9 +1197,9 @@ namespace Serial_Port
 
                     serialPort1.Write(firstPart);
 
-                    if (!string.IsNullOrEmpty(selectedEndline))
+                    if (!string.IsNullOrEmpty(detectedEndLine))
                     {
-                        serialPort1.Write(selectedEndline); // Satır sonu karakterini gönder
+                        serialPort1.Write(detectedEndLine); // Satır sonu karakterini gönder
                     }
 
                 }
@@ -1469,9 +1467,9 @@ namespace Serial_Port
                     // Komutu sonlandırmadan gönder, ardından seçilen endline karakterini gönder
                     string command = ReplaceCommandData(cmd_cb.Text.TrimEnd()).Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
                     serialPort1.Write(command); // Komutu gönder
-                    if (!string.IsNullOrEmpty(selectedEndline))
+                    if (!string.IsNullOrEmpty(detectedEndLine))
                     {
-                        serialPort1.Write(selectedEndline); // Satır sonu karakterini gönder
+                        serialPort1.Write(detectedEndLine); // Satır sonu karakterini gönder
                     }
                     cmd_cb.Items.Add(cmd_cb.Text);
                     cmd_cb.Text = string.Empty;
@@ -1748,11 +1746,6 @@ namespace Serial_Port
                 {
                     string textToPaste = Clipboard.GetText();
 
-                    // Metni daima TextBox'ın sonuna ekle
-                    clitbox.SelectionStart = clitbox.Text.Length; // İmleci sona getir
-                    clitbox.SelectionLength = 0;
-                    clitbox.SelectedText = textToPaste; // Metni mevcut metnin sonuna ekle
-
                     // Seri porta metni gönder
                     serialPort1.Write(textToPaste);
                 }
@@ -1772,6 +1765,14 @@ namespace Serial_Port
 
         }
 
-        
+        private void sendCMDLineForEditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cmd_cb.Text += clitbox.SelectedText; cmd_cb.Focus(); cmd_cb.SelectionStart = cmd_cb.Text.Length; cmd_cb.SelectionLength = 0;
+        }
+
+        private void saveAsCLIPanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveascommand();
+        }
     }
 }

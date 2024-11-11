@@ -67,6 +67,8 @@
             this.clitbox_MenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendCMDLineForEditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsCLIPanelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmd_cb = new System.Windows.Forms.ComboBox();
             this.cmd_cb_menustrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.save_cmd_cb_cmts = new System.Windows.Forms.ToolStripMenuItem();
@@ -435,25 +437,39 @@
             // 
             this.clitbox_MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem});
+            this.pasteToolStripMenuItem,
+            this.sendCMDLineForEditToolStripMenuItem,
+            this.saveAsCLIPanelToolStripMenuItem});
             this.clitbox_MenuStrip.Name = "clitbox_MenuStrip";
-            this.clitbox_MenuStrip.Size = new System.Drawing.Size(145, 48);
+            this.clitbox_MenuStrip.Size = new System.Drawing.Size(253, 92);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            // 
+            // sendCMDLineForEditToolStripMenuItem
+            // 
+            this.sendCMDLineForEditToolStripMenuItem.Name = "sendCMDLineForEditToolStripMenuItem";
+            this.sendCMDLineForEditToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.sendCMDLineForEditToolStripMenuItem.Text = "Send to command line for editing";
+            this.sendCMDLineForEditToolStripMenuItem.Click += new System.EventHandler(this.sendCMDLineForEditToolStripMenuItem_Click);
+            // 
+            // saveAsCLIPanelToolStripMenuItem
+            // 
+            this.saveAsCLIPanelToolStripMenuItem.Name = "saveAsCLIPanelToolStripMenuItem";
+            this.saveAsCLIPanelToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.saveAsCLIPanelToolStripMenuItem.Text = "Save as CLI panel";
+            this.saveAsCLIPanelToolStripMenuItem.Click += new System.EventHandler(this.saveAsCLIPanelToolStripMenuItem_Click);
             // 
             // cmd_cb
             // 
@@ -1342,6 +1358,8 @@
         private System.Windows.Forms.ContextMenuStrip clitbox_MenuStrip;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sendCMDLineForEditToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsCLIPanelToolStripMenuItem;
     }
 }
 
