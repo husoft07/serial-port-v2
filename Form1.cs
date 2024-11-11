@@ -48,36 +48,34 @@ namespace Serial_Port
 
         public void libraryload()
         {
-            string dllPath = Path.Combine(Application.StartupPath, "samplecmd.dll");
+            string startupPath = Application.StartupPath;
+            string[] dllFiles = Directory.GetFiles(startupPath, "*.dll");
 
-            if (File.Exists(dllPath))
+            foreach (var dllPath in dllFiles)
             {
                 try
                 {
-                    // DLL'i yükleyelim
                     Assembly dll = Assembly.LoadFrom(dllPath);
-                    Type menuHelperType = dll.GetType("samplecmd.MenuHelper");
-
-                    if (menuHelperType != null)
+                    foreach (var type in dll.GetTypes())
                     {
-                        // Menü oluşturmak için samplecmd'deki CreateSampleMenu metodunu çalıştırıyoruz
-                        var method = menuHelperType.GetMethod("CreateSampleMenu");
+                        if (type.Name == "MenuHelper")
+                        {
+                            var method = type.GetMethod("CreateSampleMenu");
 
-                        // MenuStrip nesnesini parametre olarak gönderiyoruz
-                        method?.Invoke(null, new object[] { menuStrip1 });
+                            if (method != null)
+                            {
+                                method.Invoke(null, new object[] { menuStrip1 });
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"DLL yüklendi ancak bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"DLL yükleme hatası ({dllPath}): {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-            {
-                // Eğer DLL yoksa kullanıcıya uyarı gösteriyoruz
-                MessageBox.Show("samplecmd.dll bulunamadı. Uygulama sınırlı işlevsellikle çalışacaktır.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
+
 
 
         private List<string> commandList = new List<string>(); // Komut listesi

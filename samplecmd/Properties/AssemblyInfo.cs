@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("samplecmd")]
 [assembly: AssemblyDescription("An application providing serial port communication and command interaction similar to Putty.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hüseyin YILMAZ")]
+[assembly: AssemblyCompany("husoft07@hotmail.com")]
 [assembly: AssemblyProduct("samplecmd")]
 [assembly: AssemblyCopyright("Copyright © 2024 Husoft07")]
 [assembly: AssemblyTrademark("Husoft07™")]
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Yapı Numarası
 //      Düzeltme
 //
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.1")]
+[assembly: AssemblyFileVersion("1.0.0.1")]
