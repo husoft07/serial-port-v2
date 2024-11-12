@@ -381,7 +381,7 @@ namespace Serial_Port
                 connection_tsbtn.Text = Properties.Strings.connect;
                 connection_tsbtn.BackColor = Color.LightGreen;
                 portlist_tscb.Items.Clear();
-                Getportlist();
+                //Getportlist();
             }
             else { openport(); }
         }
@@ -403,21 +403,28 @@ namespace Serial_Port
                 e.SuppressKeyPress = true; // Enter tuşunun TextBox'a yeni satır eklemesini engelle
                 if (serialPort1.IsOpen)
                 {
-                    if (detectedEndLine=="") { serialPort1.Write("t"); }
-                    else 
-                    { 
-                    serialPort1.Write(detectedEndLine);// Satır sonu karakterini seri porta gönder
+                    // Eğer detectedEndLine boşsa varsayılan karakterler gönder
+                    if (string.IsNullOrEmpty(detectedEndLine))
+                    {
+                        serialPort1.Write("t");  // Varsayılan karakter (örnek olarak)
+                        serialPort1.Write("\r");
+                        serialPort1.Write("\n");
+                        serialPort1.Write("\r\n");
+                    }
+                    else
+                    {
+                        // Boş değilse detectedEndLine'ı gönder
+                        serialPort1.Write(detectedEndLine);
                     }
                 }
-
                 else
                 {
                     MessageBox.Show(Properties.Strings.port_closed);
                 }
-
             }
-                
-            
+
+
+
 
             if (e.KeyCode == Keys.Tab ||e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
             {
@@ -1772,5 +1779,7 @@ namespace Serial_Port
         {
             saveascommand();
         }
+
+       
     }
 }

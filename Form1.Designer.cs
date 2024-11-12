@@ -408,10 +408,10 @@
             this.CLIpanel.Controls.Add(this.cmd_cb);
             this.CLIpanel.Controls.Add(this.suggestionBox);
             this.CLIpanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CLIpanel.Location = new System.Drawing.Point(0, 49);
+            this.CLIpanel.Location = new System.Drawing.Point(0, 51);
             this.CLIpanel.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.CLIpanel.Name = "CLIpanel";
-            this.CLIpanel.Size = new System.Drawing.Size(824, 725);
+            this.CLIpanel.Size = new System.Drawing.Size(824, 723);
             this.CLIpanel.TabIndex = 4;
             // 
             // clitbox
@@ -426,7 +426,7 @@
             this.clitbox.Multiline = true;
             this.clitbox.Name = "clitbox";
             this.clitbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.clitbox.Size = new System.Drawing.Size(824, 696);
+            this.clitbox.Size = new System.Drawing.Size(824, 694);
             this.clitbox.TabIndex = 0;
             this.clitbox.DoubleClick += new System.EventHandler(this.Clitbox_DoubleClick);
             this.clitbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Clitbox_KeyDown);
@@ -477,7 +477,7 @@
             this.cmd_cb.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cmd_cb.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cmd_cb.FormattingEnabled = true;
-            this.cmd_cb.Location = new System.Drawing.Point(0, 696);
+            this.cmd_cb.Location = new System.Drawing.Point(0, 694);
             this.cmd_cb.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.cmd_cb.Name = "cmd_cb";
             this.cmd_cb.Size = new System.Drawing.Size(824, 29);
@@ -557,21 +557,22 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1289, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1289, 27);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "quickmenu_strip";
             // 
             // portlist_tslabel
             // 
+            this.portlist_tslabel.Image = ((System.Drawing.Image)(resources.GetObject("portlist_tslabel.Image")));
             this.portlist_tslabel.Name = "portlist_tslabel";
-            this.portlist_tslabel.Size = new System.Drawing.Size(71, 22);
+            this.portlist_tslabel.Size = new System.Drawing.Size(95, 24);
             this.portlist_tslabel.Text = "Port Listesi";
             this.portlist_tslabel.Click += new System.EventHandler(this.portlist_tslabel_Click);
             // 
             // portlist_tscb
             // 
             this.portlist_tscb.Name = "portlist_tscb";
-            this.portlist_tscb.Size = new System.Drawing.Size(140, 25);
+            this.portlist_tscb.Size = new System.Drawing.Size(140, 27);
             this.portlist_tscb.SelectedIndexChanged += new System.EventHandler(this.portlist_tscb_SelectedIndexChanged);
             // 
             // connection_tsbtn
@@ -580,30 +581,30 @@
             this.connection_tsbtn.Image = ((System.Drawing.Image)(resources.GetObject("connection_tsbtn.Image")));
             this.connection_tsbtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.connection_tsbtn.Name = "connection_tsbtn";
-            this.connection_tsbtn.Size = new System.Drawing.Size(51, 22);
+            this.connection_tsbtn.Size = new System.Drawing.Size(51, 24);
             this.connection_tsbtn.Text = "Bağlan";
             this.connection_tsbtn.Click += new System.EventHandler(this.Connection_tsbtn_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // sysip_tslb
             // 
             this.sysip_tslb.Name = "sysip_tslb";
-            this.sysip_tslb.Size = new System.Drawing.Size(60, 22);
+            this.sysip_tslb.Size = new System.Drawing.Size(60, 24);
             this.sysip_tslb.Text = "Sistem IP";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // sysname_tslb
             // 
             this.sysname_tslb.Name = "sysname_tslb";
-            this.sysname_tslb.Size = new System.Drawing.Size(69, 22);
+            this.sysname_tslb.Size = new System.Drawing.Size(69, 24);
             this.sysname_tslb.Text = "Sistem Adı";
             // 
             // setting_panel
@@ -611,10 +612,10 @@
             this.setting_panel.BackColor = System.Drawing.Color.LightSkyBlue;
             this.setting_panel.Controls.Add(this.command_tabpanel);
             this.setting_panel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.setting_panel.Location = new System.Drawing.Point(824, 49);
+            this.setting_panel.Location = new System.Drawing.Point(824, 51);
             this.setting_panel.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.setting_panel.Name = "setting_panel";
-            this.setting_panel.Size = new System.Drawing.Size(465, 725);
+            this.setting_panel.Size = new System.Drawing.Size(465, 723);
             this.setting_panel.TabIndex = 7;
             // 
             // command_tabpanel
@@ -626,7 +627,7 @@
             this.command_tabpanel.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.command_tabpanel.Name = "command_tabpanel";
             this.command_tabpanel.SelectedIndex = 0;
-            this.command_tabpanel.Size = new System.Drawing.Size(465, 725);
+            this.command_tabpanel.Size = new System.Drawing.Size(465, 723);
             this.command_tabpanel.TabIndex = 0;
             // 
             // defines_tab
@@ -651,7 +652,7 @@
             this.defines_tab.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.defines_tab.Name = "defines_tab";
             this.defines_tab.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.defines_tab.Size = new System.Drawing.Size(457, 695);
+            this.defines_tab.Size = new System.Drawing.Size(457, 693);
             this.defines_tab.TabIndex = 0;
             this.defines_tab.Text = "Tanımlar";
             this.defines_tab.UseVisualStyleBackColor = true;
@@ -679,7 +680,7 @@
             this.define_gb.Controls.Add(this.routip_cb);
             this.define_gb.Controls.Add(this.sysip_cb);
             this.define_gb.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.define_gb.Location = new System.Drawing.Point(4, 327);
+            this.define_gb.Location = new System.Drawing.Point(4, 325);
             this.define_gb.Name = "define_gb";
             this.define_gb.Size = new System.Drawing.Size(449, 366);
             this.define_gb.TabIndex = 36;
@@ -1048,7 +1049,7 @@
             this.precommand_tab.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.precommand_tab.Name = "precommand_tab";
             this.precommand_tab.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.precommand_tab.Size = new System.Drawing.Size(457, 695);
+            this.precommand_tab.Size = new System.Drawing.Size(457, 693);
             this.precommand_tab.TabIndex = 1;
             this.precommand_tab.Text = "Hazır Komutlar";
             this.precommand_tab.UseVisualStyleBackColor = true;
@@ -1064,7 +1065,7 @@
             this.command_lbox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.command_lbox.Name = "command_lbox";
             this.command_lbox.ScrollAlwaysVisible = true;
-            this.command_lbox.Size = new System.Drawing.Size(449, 602);
+            this.command_lbox.Size = new System.Drawing.Size(449, 600);
             this.command_lbox.TabIndex = 0;
             this.command_lbox.DragDrop += new System.Windows.Forms.DragEventHandler(this.Command_lbox_DragDrop);
             this.command_lbox.DragEnter += new System.Windows.Forms.DragEventHandler(this.Command_lbox_DragEnter);
@@ -1173,7 +1174,7 @@
             // startcfg_btn
             // 
             this.startcfg_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.startcfg_btn.Location = new System.Drawing.Point(4, 604);
+            this.startcfg_btn.Location = new System.Drawing.Point(4, 602);
             this.startcfg_btn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.startcfg_btn.Name = "startcfg_btn";
             this.startcfg_btn.Size = new System.Drawing.Size(449, 32);
@@ -1185,7 +1186,7 @@
             // refreshfile_btn
             // 
             this.refreshfile_btn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.refreshfile_btn.Location = new System.Drawing.Point(4, 636);
+            this.refreshfile_btn.Location = new System.Drawing.Point(4, 634);
             this.refreshfile_btn.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.refreshfile_btn.Name = "refreshfile_btn";
             this.refreshfile_btn.Size = new System.Drawing.Size(449, 32);
@@ -1198,7 +1199,7 @@
             // 
             this.FilePathBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.FilePathBox.FormattingEnabled = true;
-            this.FilePathBox.Location = new System.Drawing.Point(4, 668);
+            this.FilePathBox.Location = new System.Drawing.Point(4, 666);
             this.FilePathBox.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.FilePathBox.Name = "FilePathBox";
             this.FilePathBox.Size = new System.Drawing.Size(449, 25);

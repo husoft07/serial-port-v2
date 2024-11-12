@@ -151,6 +151,26 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>380, 13</value>
   </metadata>
+  <data name="portlist_tslabel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEIAAABCCAYAAADjVADoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAANmSURBVHhe7ZqNcaMwEIVdQkrAdgMuISW4g0sH5w4uHVw68HWQElKCS3AJLuHuPe5Jswjj+Ecr
+        8KBvZhO8CO0PixCgRaVSqVQqlUrlSWia5gXyBvm9Wq0+l8vlEXKC/DVC3RfbQLaQRodfBfr9xX74X6pp
+        gDgY/I7BKdB75IA+mMBvk2KPk2pcmACdnfSMPyToc38pIbatVONxIQEnxMCy30HasgcvOixUzwbyCnlH
+        +8EqGip920aq8sD5Bg4crDMUqEPwMehr4TGQN/TDsaPTL3XY16kOu1+qsqzX6x8w3qkC+MgEvKrJw7Av
+        9Jsm5ETbajJuInQpdJyD0zvtzg77pg1rM1wqVtc2LsWZJPTK1QPaoC1rO/VFTf2BL1trGMLb3M3jwL0o
+        Gb0xKYia+SInbHkWTUKANmnb+BFFTXyBIVuWRS6HIZSM3l1Fu/1IrkUOjKMlIUAf6IvxyzcRMhiN4afb
+        3YGcGYyvFnXhAwLfG2NHqd0wtm4WdZGfM9WQbbI0BGxwqt0J8BrhceoiP+icU91gzL0aJguCj7cpJkXq
+        eYHA08ui+JxhEiDwOIvE9pfU8wPBf5hE+A1EUwcJiC9JkAj3u8VkQfBxCovtjdTzIyRBiXiKgRJ+knf+
+        kepxbCKkmjzwNVRxvjmPS6fOyN+8J68tstxl5gjc5KN5/kQ8G0jExiRivo8DSATfeLeJwPasJ4DxqRXb
+        H1LPDyTATgC3Us8LBN4ZKPH7KQb47CBu+97kIPX8QPD2ccDvvcm9L1R5nLpwA4HHuwXF9bKwhm4VdeEG
+        bMRqQOL3UvsQDN0qODmu7zEQ+M/Enu8gaY1BJvmBBz/9Xx4FY0b4yW+0R3MlIV4S3NYuX4xBK1P5CFyu
+        Qo3RVJiMYpfJmSTwkig3i0wMp1+iRlsoQl+0uwzWOH/TAauDuC4d0t0hXa9V/s26dUAqJoPT2o5zEFZH
+        7sVk6ZJDJn2cr27WEala4FCvXCVMCFfO3jyY8hjI0MrdomNSD+uMVB3g26Uv2FxyyFd+XFTKxaUxOdyG
+        EC5GDcGnVUZhFYz/kck6JVWPNpym+WPbZpA2AZBpfE6wzkk1SJuO/5fF4Oq37wTH3r1y1xU41JY+/0t1
+        FWhPWPb8jsrg0vGEZ/yIu8In20DuGlcqlUqlUqlUKqOwWPwDfmTjNeXbbOkAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="connection_tsbtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

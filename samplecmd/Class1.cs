@@ -16,13 +16,12 @@ namespace samplecmd
             ToolStripMenuItem mainmenu = new ToolStripMenuItem("Custom area");
             menuStrip.Items.Add(mainmenu);
 
-            // İç içe açılır menüler oluşturuluyor: Nokia, Huawei, ZTE
+            // İç içe açılır menüler oluşturuluyor
             ToolStripMenuItem Mymenu = new ToolStripMenuItem("Mymenu1");
             ToolStripMenuItem Mymenu2 = new ToolStripMenuItem("Mymenu2");
             ToolStripMenuItem Mymenu3 = new ToolStripMenuItem("Mymenu3");
             ToolStripMenuItem Other = new ToolStripMenuItem("Other");
 
-            // "7353isam" adında bir alt menü öğesi oluşturuluyor
             ToolStripMenuItem submenu1 = new ToolStripMenuItem("submenu1");
             ToolStripMenuItem submenu2 = new ToolStripMenuItem("submenu2");
             ToolStripMenuItem submenu3 = new ToolStripMenuItem("submenu3");
