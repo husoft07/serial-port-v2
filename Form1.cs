@@ -1,4 +1,4 @@
-﻿using System;
+L8﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -426,7 +426,7 @@ namespace Serial_Port
 
 
 
-            if (e.KeyCode == Keys.Tab ||e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
             {
                 e.SuppressKeyPress = true; // Tuş basımını devre dışı bırak
             }
