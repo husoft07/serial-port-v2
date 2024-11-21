@@ -406,7 +406,6 @@ namespace Serial_Port
                     // Eğer detectedEndLine boşsa varsayılan karakterler gönder
                     if (string.IsNullOrEmpty(detectedEndLine))
                     {
-                        serialPort1.Write("t");  // Varsayılan karakter (örnek olarak)
                         serialPort1.Write("\r");
                         serialPort1.Write("\n");
                         serialPort1.Write("\r\n");
@@ -426,7 +425,7 @@ namespace Serial_Port
 
 
 
-            if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            if (e.KeyCode == Keys.Tab||e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
             {
                 e.SuppressKeyPress = true; // Tuş basımını devre dışı bırak
             }
@@ -440,9 +439,7 @@ namespace Serial_Port
 
 
 
-
-        private string detectedEndLine = ""; // Otomatik algılanan satır sonu karakterini saklar
-
+        private string detectedEndLine = ""; // Otomatik algılanan satır sonu karakteri
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -483,8 +480,6 @@ namespace Serial_Port
                 // Hata durumunu yönet
             }
         }
-
-
 
 
         private void portlist_tslabel_Click(object sender, EventArgs e)
@@ -1710,26 +1705,30 @@ namespace Serial_Port
         {
             try
             {
-                // Enter tuşuna basılmadıysa işlemleri yap
-                if (e.KeyChar != (char)Keys.Enter)
+                // Backspace kontrolü
+                if (e.KeyChar == '\b') // Backspace tuşu
                 {
-                    e.Handled = true;
-
-                    // Eğer Tab tuşuna basıldıysa '\t' karakteri olarak gönder
-                    if (e.KeyChar == (char)Keys.Tab)
-                    {
-                        serialPort1.Write("\t");
-                    }
-                    else
-                    {
-                        // Diğer karakterler için doğrudan gönder
-                        serialPort1.Write(e.KeyChar.ToString());
-                    }
+                    serialPort1.Write("\b"); // Seri porta Backspace karakterini gönder
+                    e.Handled = true;       // Varsayılan Backspace davranışını engelle
+                    return;
                 }
+
+                // Tab kontrolü
+                if (e.KeyChar == '\t') // Tab tuşu
+                {
+                    serialPort1.Write("\t"); // Seri porta Tab karakterini gönder
+                    e.Handled = true;       // Varsayılan Tab davranışını engelle
+                    return;
+                }
+
+                // Diğer karakterleri seri porta gönder
+                serialPort1.Write(e.KeyChar.ToString());
+
+                e.Handled = true; // Varsayılan davranışı engelle
             }
-            catch
+            catch (Exception ex)
             {
-                // Hata oluştuğunda işlemi atla
+                MessageBox.Show($"Hata: {ex.Message}");
             }
         }
 
