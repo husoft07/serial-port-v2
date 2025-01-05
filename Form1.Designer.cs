@@ -140,6 +140,14 @@
             this.refreshfile_btn = new System.Windows.Forms.Button();
             this.FilePathBox = new System.Windows.Forms.ComboBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.Test = new System.Windows.Forms.ToolStripMenuItem();
+            this.Huawei_tsmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Hua5616_5818_tsmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.HuaT21_tsmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Alcatel_tsmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Zte_tsmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Zte_9806hv_tsmi = new System.Windows.Forms.ToolStripMenuItem();
+            this.Zte9816T21_tsmi = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.CLIpanel.SuspendLayout();
@@ -161,7 +169,8 @@
             this.lang_tstripmenu1,
             this.connectset_tsmn,
             this.templates_tsmn,
-            this.help_tsmn});
+            this.help_tsmn,
+            this.Test});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
@@ -199,7 +208,7 @@
             // portToolStripMenuItem
             // 
             this.portToolStripMenuItem.Name = "portToolStripMenuItem";
-            this.portToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.portToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.portToolStripMenuItem.Text = "Port";
             // 
             // baudrateToolStripMenuItem
@@ -207,7 +216,7 @@
             this.baudrateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.baudrate_tscb});
             this.baudrateToolStripMenuItem.Name = "baudrateToolStripMenuItem";
-            this.baudrateToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.baudrateToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.baudrateToolStripMenuItem.Text = "Baudrate";
             // 
             // baudrate_tscb
@@ -221,7 +230,7 @@
             this.dataBitToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.databit_tscb});
             this.dataBitToolStripMenuItem.Name = "dataBitToolStripMenuItem";
-            this.dataBitToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.dataBitToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.dataBitToolStripMenuItem.Text = "Data Bit";
             // 
             // databit_tscb
@@ -235,7 +244,7 @@
             this.parityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.parity_tscb});
             this.parityToolStripMenuItem.Name = "parityToolStripMenuItem";
-            this.parityToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.parityToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.parityToolStripMenuItem.Text = "Parity";
             // 
             // parity_tscb
@@ -249,7 +258,7 @@
             this.stopBitToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stopbit_tscb});
             this.stopBitToolStripMenuItem.Name = "stopBitToolStripMenuItem";
-            this.stopBitToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.stopBitToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.stopBitToolStripMenuItem.Text = "Stop Bit";
             // 
             // stopbit_tscb
@@ -263,7 +272,7 @@
             this.dTREnableToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dtr_tscb});
             this.dTREnableToolStripMenuItem.Name = "dTREnableToolStripMenuItem";
-            this.dTREnableToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.dTREnableToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.dTREnableToolStripMenuItem.Text = "DTREnable";
             // 
             // dtr_tscb
@@ -1206,6 +1215,64 @@
             this.FilePathBox.TabIndex = 1;
             this.FilePathBox.SelectedIndexChanged += new System.EventHandler(this.FilePathBox_SelectedIndexChanged);
             // 
+            // Test
+            // 
+            this.Test.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Huawei_tsmi,
+            this.Alcatel_tsmi,
+            this.Zte_tsmi});
+            this.Test.Name = "Test";
+            this.Test.Size = new System.Drawing.Size(40, 20);
+            this.Test.Text = "Test";
+            // 
+            // Huawei_tsmi
+            // 
+            this.Huawei_tsmi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Hua5616_5818_tsmi,
+            this.HuaT21_tsmi});
+            this.Huawei_tsmi.Name = "Huawei_tsmi";
+            this.Huawei_tsmi.Size = new System.Drawing.Size(180, 22);
+            this.Huawei_tsmi.Text = "Huawei";
+            // 
+            // Hua5616_5818_tsmi
+            // 
+            this.Hua5616_5818_tsmi.Name = "Hua5616_5818_tsmi";
+            this.Hua5616_5818_tsmi.Size = new System.Drawing.Size(180, 22);
+            this.Hua5616_5818_tsmi.Text = "5616/5818";
+            // 
+            // HuaT21_tsmi
+            // 
+            this.HuaT21_tsmi.Name = "HuaT21_tsmi";
+            this.HuaT21_tsmi.Size = new System.Drawing.Size(180, 22);
+            this.HuaT21_tsmi.Text = "5622 T21";
+            // 
+            // Alcatel_tsmi
+            // 
+            this.Alcatel_tsmi.Name = "Alcatel_tsmi";
+            this.Alcatel_tsmi.Size = new System.Drawing.Size(180, 22);
+            this.Alcatel_tsmi.Text = "Alcatel";
+            // 
+            // Zte_tsmi
+            // 
+            this.Zte_tsmi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Zte_9806hv_tsmi,
+            this.Zte9816T21_tsmi});
+            this.Zte_tsmi.Name = "Zte_tsmi";
+            this.Zte_tsmi.Size = new System.Drawing.Size(180, 22);
+            this.Zte_tsmi.Text = "ZTE";
+            // 
+            // Zte_9806hv_tsmi
+            // 
+            this.Zte_9806hv_tsmi.Name = "Zte_9806hv_tsmi";
+            this.Zte_9806hv_tsmi.Size = new System.Drawing.Size(180, 22);
+            this.Zte_9806hv_tsmi.Text = "9806H/V";
+            // 
+            // Zte9816T21_tsmi
+            // 
+            this.Zte9816T21_tsmi.Name = "Zte9816T21_tsmi";
+            this.Zte9816T21_tsmi.Size = new System.Drawing.Size(180, 22);
+            this.Zte9816T21_tsmi.Text = "9816 T21";
+            // 
             // Main_Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1361,6 +1428,14 @@
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendCMDLineForEditToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsCLIPanelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem Test;
+        private System.Windows.Forms.ToolStripMenuItem Huawei_tsmi;
+        private System.Windows.Forms.ToolStripMenuItem Hua5616_5818_tsmi;
+        private System.Windows.Forms.ToolStripMenuItem HuaT21_tsmi;
+        private System.Windows.Forms.ToolStripMenuItem Alcatel_tsmi;
+        private System.Windows.Forms.ToolStripMenuItem Zte_tsmi;
+        private System.Windows.Forms.ToolStripMenuItem Zte_9806hv_tsmi;
+        private System.Windows.Forms.ToolStripMenuItem Zte9816T21_tsmi;
     }
 }
 

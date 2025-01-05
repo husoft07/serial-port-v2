@@ -8,16 +8,15 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Resources;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using samplecmd;
 
 namespace Serial_Port
 {
     public partial class Main_Form1 : Form
     {
+        private List<string> commands = new List<string>();
+        private ListBox suggestionBox_cli = new ListBox();
         public Main_Form1()
         {
             InitializeComponent();
@@ -36,9 +35,6 @@ namespace Serial_Port
             //LoadComboBoxIndexes(form);
             libraryload();
             
-                
-            
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -390,14 +386,7 @@ namespace Serial_Port
 
         private void Clitbox_KeyDown(object sender, KeyEventArgs e)
         {
-
-            if (clitbox.SelectionStart != clitbox.Text.Length)
-            {
-                // İmleci sona getir
-                clitbox.SelectionStart = clitbox.Text.Length;
-                clitbox.SelectionLength = 0;
-            }
-
+            
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true; // Enter tuşunun TextBox'a yeni satır eklemesini engelle
@@ -425,19 +414,14 @@ namespace Serial_Port
 
 
 
-            if (e.KeyCode == Keys.Tab||e.KeyCode == Keys.Left || e.KeyCode == Keys.Right ||e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            if (e.KeyCode == Keys.Tab||e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down ||e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
             {
                 e.SuppressKeyPress = true; // Tuş basımını devre dışı bırak
             }
 
-            
-
-
-           // if (e.KeyCode == Keys.F2) { cmd_cb.Text += clitbox.SelectedText; cmd_cb.Focus(); cmd_cb.SelectionStart = cmd_cb.Text.Length; cmd_cb.SelectionLength = 0; }
-          //  if (e.KeyCode == Keys.F12) { saveascommand(); }
         }
 
-
+   
 
         private string detectedEndLine = ""; // Otomatik algılanan satır sonu karakteri
 
@@ -1422,8 +1406,6 @@ namespace Serial_Port
                 else if (e.KeyCode == Keys.Right) // Sağ ok tuşu ile öneriyi seçme
                 {
                     InsertSelectedSuggestion();
-                    cmd_cb.Text += " ";
-                    suggestionBox.Visible = false;
                     cmd_cb.SelectionStart = cmd_cb.Text.Length; // İmleci sona al
                     e.Handled = true;
                 }
@@ -1481,8 +1463,6 @@ namespace Serial_Port
             }
 
             
-
-
 
         }
 
@@ -1694,11 +1674,13 @@ namespace Serial_Port
             {
                 if (serialPort1.IsOpen && e.KeyChar == '?')
                 {
+                    e.Handled = true;
                     // SerialPort'a ? ile komut yazma işlemini gerçekleştiriyoruz
                     serialPort1.Write(cmd_cb.Text);
-                    cmd_cb.Text=string.Empty;
+                    cmd_cb.Text = string.Empty;
                 }
-            } catch { }
+            }
+            catch { }
         }
 
         private void Clitbox_KeyPress(object sender, KeyPressEventArgs e)
@@ -1780,5 +1762,7 @@ namespace Serial_Port
         }
 
        
+
+
     }
 }
