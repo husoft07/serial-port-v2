@@ -9,6 +9,8 @@ using System.Net;
 using System.Reflection;
 using System.Resources;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace Serial_Port
@@ -17,6 +19,7 @@ namespace Serial_Port
     {
         private List<string> commands = new List<string>();
         private ListBox suggestionBox_cli = new ListBox();
+        private Cmd cmdHandler;
         public Main_Form1()
         {
             InitializeComponent();
@@ -34,13 +37,15 @@ namespace Serial_Port
             //Main_Form1 form=this;
             //LoadComboBoxIndexes(form);
             libraryload();
-            
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
+            cmdHandler = new Cmd(serialPort1, command_lbox, clitbox, detectedEndLine);
 
         }
+
+
+
+
+
+
 
         public void libraryload()
         {
@@ -1386,9 +1391,9 @@ namespace Serial_Port
             string[] words = input.Split(' ');
             return words.Last();
         }
-        private void Cmd_cb_KeyDown(object sender, KeyEventArgs e)
+        private async void Cmd_cb_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
 
             if (suggestionBox.Visible)
             {
@@ -1406,6 +1411,8 @@ namespace Serial_Port
                 else if (e.KeyCode == Keys.Right) // Sağ ok tuşu ile öneriyi seçme
                 {
                     InsertSelectedSuggestion();
+                    cmd_cb.Text += " ";
+                    suggestionBox.Visible = false;
                     cmd_cb.SelectionStart = cmd_cb.Text.Length; // İmleci sona al
                     e.Handled = true;
                 }
@@ -1423,7 +1430,7 @@ namespace Serial_Port
                         if (cmd_cb.Items.Count > 0)
                         {
                             if (cmd_cb.SelectedIndex <= 0) { cmd_cb.SelectedIndex = cmd_cb.Items.Count - 1; }
-                            else { cmd_cb.SelectedIndex --; }
+                            else { cmd_cb.SelectedIndex--; }
                         }
                     }
                     catch { }
@@ -1435,7 +1442,7 @@ namespace Serial_Port
                     try
                     {
                         if (cmd_cb.SelectedIndex == cmd_cb.Items.Count - 1) { cmd_cb.SelectedIndex = 0; }
-                        else { cmd_cb.SelectedIndex ++; }
+                        else { cmd_cb.SelectedIndex++; }
                     }
                     catch { }
                 }
@@ -1443,11 +1450,21 @@ namespace Serial_Port
 
             if (e.KeyCode == Keys.Enter)
             {
+                string command = ReplaceCommandData(cmd_cb.Text.TrimEnd()).Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
+                string input = command;
                 e.SuppressKeyPress = true; // Enter tuşunun TextBox'a yeni satır eklemesini engelle
-                if (serialPort1.IsOpen)
+                if (cmdHandler.IsLoggedIn) { await cmdHandler.HandleAsync(input); }
+                else if (input.Equals(">>login", StringComparison.OrdinalIgnoreCase))
+                {
+                    cmdHandler.Login();
+                    cmd_cb.Text = string.Empty;
+                    clitbox.AppendText("Giriş yapıldı. Özel Komutlar kullanılabilir. Komut listesi için help komutunu kullanın.\n");
+                    return;
+                }
+                else if (serialPort1.IsOpen)
                 {
                     // Komutu sonlandırmadan gönder, ardından seçilen endline karakterini gönder
-                    string command = ReplaceCommandData(cmd_cb.Text.TrimEnd()).Split(new[] { Environment.NewLine }, StringSplitOptions.None).Last();
+                    
                     serialPort1.Write(command); // Komutu gönder
                     if (!string.IsNullOrEmpty(detectedEndLine))
                     {
@@ -1456,15 +1473,20 @@ namespace Serial_Port
                     cmd_cb.Items.Add(cmd_cb.Text);
                     cmd_cb.Text = string.Empty;
                 }
-                else
+                else if (!serialPort1.IsOpen)
                 {
+                    // Port kapalıysa hata mesajı göster
                     MessageBox.Show(Properties.Strings.port_closed);
                 }
+                cmd_cb.Items.Add(cmd_cb.Text); // Komut gönderildikten sonra TextBox'ı temizle
+                cmd_cb.Text = string.Empty; // Komut gönderildikten sonra TextBox'ı temizle
             }
-
-            
-
         }
+
+
+
+
+
 
         private void save_cmd_cb_cmts_Click(object sender, EventArgs e)
         {
